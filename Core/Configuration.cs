@@ -14,7 +14,7 @@ namespace Core
 
         public static bool FacebookAvailable { get; private set; } = false;
     
-
+         
         static Configuration()
         {
             try
