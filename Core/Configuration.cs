@@ -13,7 +13,7 @@ namespace Core
         public static string PageAccessToken { get; private set; } = "";
 
         public static bool FacebookAvailable { get; private set; } = false;
-    
+     
          
         static Configuration()
         {
