@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Core
 {
-    public class MetaCommunicator
+    public class FacebookMetaCommunicator
     {
         private int lastIdReceived = -1;
         private HttpClient _httpClient;
         private Overseer overseer;
 
-        public MetaCommunicator(Overseer overseer)
+        public FacebookMetaCommunicator(Overseer overseer)
         {
             this.overseer = overseer;
         }

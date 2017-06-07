@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Aiml;
+using Core.Endpoints;
 
 namespace Core
 {
@@ -15,6 +16,8 @@ namespace Core
         public Persons Persons;
         public MessengerSettings.MessengerSettings Settings;
         public AimlCore Aiml;
+        public FacebookEndpoint Facebook;
+        public HomeEndpoint Home;
 
         public Overseer()
         {
@@ -24,6 +27,8 @@ namespace Core
             this.Persons = new Core.Persons(this);
             this.Settings = new MessengerSettings.MessengerSettings(this);
             this.Aiml = new Core.Aiml.AimlCore(this);
+            this.Home = new HomeEndpoint(this);
+            this.Facebook = new FacebookEndpoint(this);
         }
 
         public void Initialize()

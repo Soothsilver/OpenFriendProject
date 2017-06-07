@@ -3,23 +3,29 @@ using System.Threading.Tasks;
 
 namespace Core
 {
+    [Serializable]
     public class Friend
     {
-        public string UserId { get; }
-        public bool IsHome => UserId == "home";
-        public bool IsFacebook => UserId != "home";
+        public bool IsFacebook => Memory.Persistent.FacebookId != null;
 
         public bool HasRealisticTypingSpeed => true;
 
-        private Overseer overseer;
-        private ThreadQueue queue = new ThreadQueue();
-
         public Memory Memory;
 
-        public Friend(string userId, Overseer overseer)
+        private Overseer overseer;
+
+        private ThreadQueue queue = new ThreadQueue();
+
+        public Friend(Overseer overseer)
         {
-            UserId = userId;
             Memory = new Memory(this);
+            this.overseer = overseer;
+        }
+
+        public Friend(LongTermMemory memory, Overseer overseer)
+        {
+            Memory = new Memory(this);
+            this.Memory.Persistent = memory;
             this.overseer = overseer;
         }
 
@@ -37,6 +43,17 @@ namespace Core
             {
                 overseer.MessageProcessor.ProcessIncomingMessage(this, message).Wait();
             });
+        }
+
+        public void SavePersistentMemory()
+        {
+            MemoryStorage.SaveToFile(this.Memory.Persistent);
+        }
+
+        public override string ToString()
+        {
+            return this.Memory.Persistent.CommonName + " (ID " + this.Memory.Persistent.InternalId + ", caretaker " +
+                   this.Memory.Persistent.CaretakerName + ")";
         }
     }
 }

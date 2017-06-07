@@ -15,6 +15,17 @@ namespace Core.ProcessorCodes
 
         public override async Task<bool> ProcessMessage(Friend friend, string message)
         {
+            if (message.StartsWith("/rename "))
+            {
+                friend.Memory.Persistent.CommonName = message.Substring("/rename ".Length);
+                friend.SavePersistentMemory();
+                await Overseer.Speaking.SendMessage(friend, "My name has changed!");
+            }
+            if (message == "/name")
+            {
+                await Overseer.Speaking.SendMessage(friend,
+                    "My name is '" + friend.Memory.Persistent.CommonName + "'.");
+            }
             if (message.ToLower() == "exit" || message.ToLower() == "return" || message.ToLower() == "quit")
             {
                 if (friend.Memory.TalkingToAlice)

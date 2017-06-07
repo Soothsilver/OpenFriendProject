@@ -21,7 +21,8 @@ namespace Core
         {
             if (cb.Message != null)
             {
-                await StartProcessingMessage(cb.Sender.Id, cb.Message.Text.Replace("\\n", Environment.NewLine));
+                Friend f = overseer.Persons.GetFriendFromFacebookId(cb.Sender.Id);
+                await StartProcessingMessage(f, cb.Message.Text.Replace("\\n", Environment.NewLine));
             }
             if (cb.Read != null)
             {
@@ -33,13 +34,13 @@ namespace Core
             }
             if (cb.Postback != null)
             {
-                await StartProcessingMessage(cb.Sender.Id, cb.Postback.Payload);
+                Friend f = overseer.Persons.GetFriendFromFacebookId(cb.Sender.Id);
+                await StartProcessingMessage(f, cb.Postback.Payload);
             }
         }
-        private Task StartProcessingMessage(string senderId, string message)
+        private Task StartProcessingMessage(Friend friend, string message)
         {
             overseer.Speaking.Debug("Incoming message: " + message);
-            Friend friend = overseer.Persons.GetFriend(senderId);
             friend.StartProcessingInput(message);
             return Task.FromResult(0);
         }
@@ -58,9 +59,9 @@ namespace Core
         }
 
 
-        public async Task IncomingTextMessage(string id, string text)
+        public async Task IncomingTextMessage(Friend friend, string text)
         {
-            await StartProcessingMessage(id, text.Replace("\\n", Environment.NewLine));
+            await StartProcessingMessage(friend, text.Replace("\\n", Environment.NewLine));
         }
     }
 }

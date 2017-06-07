@@ -8,12 +8,14 @@ namespace Core
 {
     public class Memory
     {
+        public LongTermMemory Persistent;
         public Friend Friend { get; }
 
         public Alice.Alice Alice;
         public Memory(Friend friend)
         {
             this.Friend = friend;
+            this.Persistent = new LongTermMemory();
         }
         public ConversationNode CurrentConversation;
         public bool TalkingToAlice;

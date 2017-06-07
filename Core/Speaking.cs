@@ -39,7 +39,7 @@ namespace Core
                 {
                     Recipient = new
                     {
-                        Id = friend.UserId
+                        Id = friend.Memory.Persistent.FacebookId
                     },
                     Message = new
                     {
@@ -55,10 +55,9 @@ namespace Core
                 };
                 await PostJsonMessage(contents);
             }
-            if (friend.IsHome)
-            {
-                HomeMessage?.Invoke(url);
-            }
+          
+              HomeMessage?.Invoke(url);
+            
         }
         public async Task SenderAction(Friend friend, MessengerSenderAction action)
         {
@@ -75,7 +74,7 @@ namespace Core
                 {
                     Recipient = new
                     {
-                        Id = friend.UserId
+                        Id = friend.Memory.Persistent.FacebookId
                     },
                     Sender_action = senderAction
                 };
@@ -98,7 +97,7 @@ namespace Core
                 {
                     Recipient = new
                     {
-                        Id = friend.UserId
+                        Id = friend.Memory.Persistent.FacebookId
                     },
                     Message = new
                     {
@@ -109,11 +108,10 @@ namespace Core
                 };
                 await PostJsonMessage(contents);
             }
-            if (friend.IsHome)
-            {
-                HomeMessage?.Invoke(message);
-                SetQuickReplies?.Invoke(quickReplies);
-            }
+           
+            HomeMessage?.Invoke(message);
+            SetQuickReplies?.Invoke(quickReplies);
+            
         }
 
         private async Task PostJsonMessage(object contents)

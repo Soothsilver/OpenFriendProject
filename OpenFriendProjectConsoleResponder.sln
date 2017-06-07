@@ -7,7 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenFriendProjectConsoleRes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{E08F73CB-87B1-45CA-95E5-2DC6115F3020}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinformsFriend", "WinformsFriend\WinformsFriend.csproj", "{7B217F70-94DC-42FA-A6DD-6CF24D6DAC54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinformsClientAndServer", "WinformsFriend\WinformsClientAndServer.csproj", "{7B217F70-94DC-42FA-A6DD-6CF24D6DAC54}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deprecated", "Deprecated", "{066BC4A3-2158-48A5-896E-1C5F36818F7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AliceSubsystem", "AliceSubsystem\AliceSubsystem.csproj", "{DF1E9E2B-EAE2-440C-8116-858F79D3A14C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,8 +31,15 @@ Global
 		{7B217F70-94DC-42FA-A6DD-6CF24D6DAC54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B217F70-94DC-42FA-A6DD-6CF24D6DAC54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B217F70-94DC-42FA-A6DD-6CF24D6DAC54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF1E9E2B-EAE2-440C-8116-858F79D3A14C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF1E9E2B-EAE2-440C-8116-858F79D3A14C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF1E9E2B-EAE2-440C-8116-858F79D3A14C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF1E9E2B-EAE2-440C-8116-858F79D3A14C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5680318D-5A89-42F5-8C87-5ABCA6B01533} = {066BC4A3-2158-48A5-896E-1C5F36818F7D}
 	EndGlobalSection
 EndGlobal

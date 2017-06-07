@@ -1,6 +1,6 @@
 ﻿namespace WinformsFriend
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tbChatHistory = new System.Windows.Forms.TextBox();
+            this.panelChatButtons = new System.Windows.Forms.Panel();
+            this.bSendChat = new System.Windows.Forms.Button();
+            this.tbChatTextBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.lbSystemLog = new System.Windows.Forms.ListBox();
-            this.tbChatTextBox = new System.Windows.Forms.TextBox();
-            this.bSendChat = new System.Windows.Forms.Button();
-            this.panelChatButtons = new System.Windows.Forms.Panel();
-            this.tbChatHistory = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -92,25 +92,39 @@
             this.tabPage1.Text = "Dialogue";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // tbChatHistory
             // 
-            this.tabPage2.Controls.Add(this.lbSystemLog);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(452, 469);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Log";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tbChatHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.tbChatHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tbChatHistory.Location = new System.Drawing.Point(4, 7);
+            this.tbChatHistory.Multiline = true;
+            this.tbChatHistory.Name = "tbChatHistory";
+            this.tbChatHistory.ReadOnly = true;
+            this.tbChatHistory.Size = new System.Drawing.Size(442, 338);
+            this.tbChatHistory.TabIndex = 4;
+            this.tbChatHistory.Text = "Open Friend Project is now online.";
             // 
-            // lbSystemLog
+            // panelChatButtons
             // 
-            this.lbSystemLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbSystemLog.FormattingEnabled = true;
-            this.lbSystemLog.Location = new System.Drawing.Point(3, 3);
-            this.lbSystemLog.Name = "lbSystemLog";
-            this.lbSystemLog.Size = new System.Drawing.Size(446, 463);
-            this.lbSystemLog.TabIndex = 0;
+            this.panelChatButtons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelChatButtons.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelChatButtons.Location = new System.Drawing.Point(4, 384);
+            this.panelChatButtons.Name = "panelChatButtons";
+            this.panelChatButtons.Size = new System.Drawing.Size(442, 184);
+            this.panelChatButtons.TabIndex = 3;
+            // 
+            // bSendChat
+            // 
+            this.bSendChat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bSendChat.Location = new System.Drawing.Point(391, 351);
+            this.bSendChat.Name = "bSendChat";
+            this.bSendChat.Size = new System.Drawing.Size(55, 26);
+            this.bSendChat.TabIndex = 2;
+            this.bSendChat.Text = "Send";
+            this.bSendChat.UseVisualStyleBackColor = true;
+            this.bSendChat.Click += new System.EventHandler(this.bSendChat_Click);
             // 
             // tbChatTextBox
             // 
@@ -123,38 +137,25 @@
             this.tbChatTextBox.TabIndex = 1;
             this.tbChatTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbChatTextBox_KeyUp);
             // 
-            // bSendChat
+            // tabPage2
             // 
-            this.bSendChat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.bSendChat.Location = new System.Drawing.Point(391, 351);
-            this.bSendChat.Name = "bSendChat";
-            this.bSendChat.Size = new System.Drawing.Size(55, 26);
-            this.bSendChat.TabIndex = 2;
-            this.bSendChat.Text = "Send";
-            this.bSendChat.UseVisualStyleBackColor = true;
-            this.bSendChat.Click += new System.EventHandler(this.bSendChat_Click);
+            this.tabPage2.Controls.Add(this.lbSystemLog);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(452, 574);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Log";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // panelChatButtons
+            // lbSystemLog
             // 
-            this.panelChatButtons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelChatButtons.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelChatButtons.Location = new System.Drawing.Point(4, 384);
-            this.panelChatButtons.Name = "panelChatButtons";
-            this.panelChatButtons.Size = new System.Drawing.Size(442, 184);
-            this.panelChatButtons.TabIndex = 3;
-            // 
-            // tbChatHistory
-            // 
-            this.tbChatHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tbChatHistory.Location = new System.Drawing.Point(4, 7);
-            this.tbChatHistory.Multiline = true;
-            this.tbChatHistory.Name = "tbChatHistory";
-            this.tbChatHistory.ReadOnly = true;
-            this.tbChatHistory.Size = new System.Drawing.Size(442, 338);
-            this.tbChatHistory.TabIndex = 4;
-            this.tbChatHistory.Text = "Open Friend Project is now online.";
+            this.lbSystemLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbSystemLog.FormattingEnabled = true;
+            this.lbSystemLog.Location = new System.Drawing.Point(3, 3);
+            this.lbSystemLog.Name = "lbSystemLog";
+            this.lbSystemLog.Size = new System.Drawing.Size(446, 568);
+            this.lbSystemLog.TabIndex = 0;
             // 
             // Form1
             // 
@@ -166,7 +167,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Open Friend Project Home";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

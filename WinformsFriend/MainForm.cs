@@ -12,22 +12,28 @@ using Core;
 
 namespace WinformsFriend
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private Overseer overseer;
-        public Form1()
+        private Friend friend;
+
+        public MainForm()
         {
             InitializeComponent();
         }
 
-        private async void InitOfp()
+        public MainForm(Friend friend)
         {
-            overseer = new Overseer();
+            this.friend = friend;
+            InitializeComponent();
+        }
+
+        private void InitOfp()
+        {
+            overseer = Server.Overseer;
             overseer.Speaking.DebugMessage += Speaking_DebugMessage;
             overseer.Speaking.HomeMessage += Speaking_HomeMessage;
             overseer.Speaking.SetQuickReplies += Speaking_SetQuickReplies;
-            MetaCommunicator mc = new MetaCommunicator(overseer);
-            await mc.StartLoop();
         }
 
         private void Speaking_SetQuickReplies(Core.Conversation.QuickReply[] obj)
@@ -55,6 +61,7 @@ namespace WinformsFriend
 
         private async void B_Click(object sender, EventArgs e)
         {
+            this.panelChatButtons.Controls.Clear();
             await SendChat((sender as Button).Text);
         }
 
@@ -68,11 +75,13 @@ namespace WinformsFriend
 
         private void Ui(Action action)
         {
-
-            this.Invoke((MethodInvoker)delegate
+            if (IsHandleCreated)
             {
-                action();
-            });
+                this.Invoke((MethodInvoker) delegate
+                {
+                    action();
+                });
+            }
         }
 
         private void Speaking_DebugMessage(string obj)
@@ -102,7 +111,7 @@ namespace WinformsFriend
         private async Task SendChat(string text)
         {
             this.tbChatHistory.AppendText(Environment.NewLine + "You: " + text);
-            await overseer.Senses.IncomingTextMessage("home", text);
+            await overseer.Home.SendMessage(friend, text);
         }
 
         private async void bSendChat_Click(object sender, EventArgs e)
