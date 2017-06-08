@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Core.Aiml;
 using Core.Endpoints;
+using Core.Endpoints.Telegram;
 
 namespace Core
 {
@@ -29,6 +30,11 @@ namespace Core
             this.Aiml = new Core.Aiml.AimlCore(this);
             this.Home = new HomeEndpoint(this);
             this.Facebook = new FacebookEndpoint(this);
+
+            FacebookMetaCommunicator mc = new FacebookMetaCommunicator(this);
+            mc.StartLoop();
+            TelegramCommunicator tg = new TelegramCommunicator(this);
+            tg.StartLoop();
         }
 
         public void Initialize()

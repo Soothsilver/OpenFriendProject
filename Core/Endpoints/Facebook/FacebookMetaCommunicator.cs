@@ -18,17 +18,17 @@ namespace Core
             this.overseer = overseer;
         }
 
-        public Task StartLoop()
+        public void StartLoop()
         {
             if (!Configuration.FacebookAvailable)
             {
                 overseer.Speaking.Debug("Facebook configuration unavailable. Meta communicator will not run.");
-                return Task.FromResult(0);
+                return;
             }
             overseer.Speaking.Debug("Initing client...");
             _httpClient = new HttpClient();
             overseer.Speaking.Debug("Running loop task...");
-            return Task.Run(() => Loop());
+            Task.Run(() => Loop());
         }
 
         private async void Loop()

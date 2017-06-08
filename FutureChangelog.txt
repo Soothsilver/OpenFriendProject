@@ -4,3 +4,4 @@ Add Telegram
 DONE: Add information about typing to Home
 DONE: Make system messages faster
 DONE: Join Facebook with Home
+Use "CallbackQuery" instead of "Callback_query""

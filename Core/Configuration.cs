@@ -13,8 +13,11 @@ namespace Core
         public static string PageAccessToken { get; private set; } = "";
 
         public static bool FacebookAvailable { get; private set; } = false;
-     
-         
+        public static bool TelegramAvailable { get; private set; } = false;
+
+        public static string TelegramToken { get; private set; } = "";
+
+
         static Configuration()
         {
             try
@@ -26,6 +29,10 @@ namespace Core
                     ini.GetValue("PageAccessToken", "Facebook", "fail");
                 FacebookAvailable =
                     PageAccessToken != "fail";
+                TelegramToken =
+                    ini.GetValue("Token", "Telegram", "fail");
+                TelegramAvailable =
+                    TelegramToken != "fail";
             }
             catch (Exception)
             {

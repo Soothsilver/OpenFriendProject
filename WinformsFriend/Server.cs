@@ -14,8 +14,6 @@ namespace WinformsFriend
         public static void Init()
         {
             Overseer = new Overseer();
-            FacebookMetaCommunicator mc = new FacebookMetaCommunicator(Overseer);
-            mc.StartLoop();
         }
     }
 }
