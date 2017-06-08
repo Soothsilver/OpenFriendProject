@@ -44,105 +44,105 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="aiml\AI.aiml">
+    <Content Include="aiml\AI.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Atomic.aiml">
+    </Content>
+    <Content Include="aiml\Atomic.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Biography.aiml">
+    </Content>
+    <Content Include="aiml\Biography.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Bot.aiml">
+    </Content>
+    <Content Include="aiml\Bot.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Botmaster.aiml">
+    </Content>
+    <Content Include="aiml\Botmaster.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Client.aiml">
+    </Content>
+    <Content Include="aiml\Client.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Computers.aiml">
+    </Content>
+    <Content Include="aiml\Computers.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\CustomTagTest.aiml">
+    </Content>
+    <Content Include="aiml\CustomTagTest.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Default.aiml">
+    </Content>
+    <Content Include="aiml\Default.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Emotion.aiml">
+    </Content>
+    <Content Include="aiml\Emotion.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Food.aiml">
+    </Content>
+    <Content Include="aiml\Food.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Geography.aiml">
+    </Content>
+    <Content Include="aiml\Geography.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\History.aiml">
+    </Content>
+    <Content Include="aiml\History.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Inquiry.aiml">
+    </Content>
+    <Content Include="aiml\Inquiry.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Interjection.aiml">
+    </Content>
+    <Content Include="aiml\Interjection.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\IU.aiml">
+    </Content>
+    <Content Include="aiml\IU.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Knowledge.aiml">
+    </Content>
+    <Content Include="aiml\Knowledge.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Literature.aiml">
+    </Content>
+    <Content Include="aiml\Literature.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Money.aiml">
+    </Content>
+    <Content Include="aiml\Money.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Movies.aiml">
+    </Content>
+    <Content Include="aiml\Movies.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Music.aiml">
+    </Content>
+    <Content Include="aiml\Music.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Personality.aiml">
+    </Content>
+    <Content Include="aiml\Personality.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Philosophy.aiml">
+    </Content>
+    <Content Include="aiml\Philosophy.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Pickup.aiml">
+    </Content>
+    <Content Include="aiml\Pickup.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Predicates.aiml">
+    </Content>
+    <Content Include="aiml\Predicates.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Reduce.aiml">
+    </Content>
+    <Content Include="aiml\Reduce.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Reductions.aiml">
+    </Content>
+    <Content Include="aiml\Reductions.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Salutations.aiml">
+    </Content>
+    <Content Include="aiml\Salutations.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Science.aiml">
+    </Content>
+    <Content Include="aiml\Science.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Stack.aiml">
+    </Content>
+    <Content Include="aiml\Stack.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\Stories.aiml">
+    </Content>
+    <Content Include="aiml\Stories.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\tarot.aiml">
+    </Content>
+    <Content Include="aiml\tarot.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="aiml\That.aiml">
+    </Content>
+    <Content Include="aiml\That.aiml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="config\DefaultPredicates.xml">

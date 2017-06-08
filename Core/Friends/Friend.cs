@@ -1,32 +1,37 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.ProcessorCodes;
 
 namespace Core
 {
-    [Serializable]
     public class Friend
     {
         public bool IsFacebook => Memory.Persistent.FacebookId != null;
 
         public bool HasRealisticTypingSpeed => true;
 
+        public FriendMouth Speaking;
+
         public Memory Memory;
 
         private Overseer overseer;
+
+        public List<TemporaryProcessorCode> TemporaryProcessors = new List<TemporaryProcessorCode>();
 
         private ThreadQueue queue = new ThreadQueue();
 
         public Friend(Overseer overseer)
         {
             Memory = new Memory(this);
+            Speaking = new FriendMouth(this);
             this.overseer = overseer;
         }
 
         public Friend(LongTermMemory memory, Overseer overseer)
+            : this(overseer)
         {
-            Memory = new Memory(this);
             this.Memory.Persistent = memory;
-            this.overseer = overseer;
         }
 
         public void ScheduleWithDelay(TimeSpan delay, Action action)
@@ -54,6 +59,16 @@ namespace Core
         {
             return this.Memory.Persistent.CommonName + " (ID " + this.Memory.Persistent.InternalId + ", caretaker " +
                    this.Memory.Persistent.CaretakerName + ")";
+        }
+
+        public void RemoveTemporaryProcessor(TemporaryProcessorCode temporaryProcessorCode)
+        {
+            TemporaryProcessors.Remove(temporaryProcessorCode);
+        }
+
+        public void AddTemporaryProcessor(TemporaryProcessorCode temporaryProcessorCode)
+        {
+            TemporaryProcessors.Add(temporaryProcessorCode);
         }
     }
 }

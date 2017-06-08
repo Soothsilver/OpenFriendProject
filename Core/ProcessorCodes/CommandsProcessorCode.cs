@@ -15,49 +15,30 @@ namespace Core.ProcessorCodes
 
         public override async Task<bool> ProcessMessage(Friend friend, string message)
         {
-            if (message.StartsWith("/rename "))
+            if (message.StartsWith("/"))
             {
-                friend.Memory.Persistent.CommonName = message.Substring("/rename ".Length);
-                friend.SavePersistentMemory();
-                await Overseer.Speaking.SendMessage(friend, "My name has changed!");
-            }
-            if (message == "/name")
-            {
-                await Overseer.Speaking.SendMessage(friend,
-                    "My name is '" + friend.Memory.Persistent.CommonName + "'.");
-            }
-            if (message.ToLower() == "exit" || message.ToLower() == "return" || message.ToLower() == "quit")
-            {
-                if (friend.Memory.TalkingToAlice)
+                int space = message.IndexOf(' ');
+                string keyword = message;
+                if (space != -1)
                 {
-                    friend.Memory.TalkingToAlice = false;
-                    friend.Memory.Alice.Dispose();
+                    keyword = message.Substring(0, space);
                 }
-                await Overseer.Speaking.SendMessage(friend, "Phew.");
-                await Overseer.Speaking.SendMessage(friend, "Well, that was fun ^^.");
+                foreach (var command in Commands.AllCommands.All)
+                {
+                    if ("/" + command.Keyword == keyword.ToLower())
+                    {
+                        await command.Action(friend, message, Overseer);
+                        return true;
+                    }
+                }
+                await Overseer.Speaking.SendSystemMessage(friend,
+                    "Unrecognized command. Type '/help' for a list of commands.");
                 return true;
             }
-            if (message.ToLower().Contains("restart conversation"))
+            else
             {
-                await friend.Memory.MoveConversationTo(BookConversation.GetBeginning(), Overseer);
-                return true;
+                return false;
             }
-            if (message.ToLower().Contains("talk to alice"))
-            {
-                friend.Memory.CurrentConversation = null;
-                if (!friend.Memory.TalkingToAlice)
-                {
-                    friend.Memory.TalkingToAlice = true;
-                    await Overseer.Speaking.SendMessage(friend, "Alright! I'm initializing the Alice subsystem.");
-                    await Overseer.Speaking.SendMessage(friend, "Alice... I sometimes don't make too much sense when using that subsystem.");
-                    await Overseer.Speaking.SendMessage(friend, "It's a little embarrassing so please don't judge me.");
-                    await Overseer.Speaking.SendMessage(friend, "And type 'exit' or 'quit' any time you want to end the subsystem!");
-                    friend.Memory.Alice = Overseer.Aiml.CreateAliceFor(friend);
-                    await Overseer.Speaking.SendMessage(friend, "Done. Say hello to Alice!");
-                    return true;
-                }
-            }
-            return false;
         }
     }
 }

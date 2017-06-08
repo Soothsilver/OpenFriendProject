@@ -39,6 +39,8 @@
             this.tbChatTextBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.lbSystemLog = new System.Windows.Forms.ListBox();
+            this.lblCommonName = new System.Windows.Forms.Label();
+            this.progressTyping = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -157,13 +159,34 @@
             this.lbSystemLog.Size = new System.Drawing.Size(446, 568);
             this.lbSystemLog.TabIndex = 0;
             // 
-            // Form1
+            // lblCommonName
+            // 
+            this.lblCommonName.AutoSize = true;
+            this.lblCommonName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblCommonName.Location = new System.Drawing.Point(29, 219);
+            this.lblCommonName.Name = "lblCommonName";
+            this.lblCommonName.Size = new System.Drawing.Size(86, 31);
+            this.lblCommonName.TabIndex = 3;
+            this.lblCommonName.Text = "Name";
+            // 
+            // progressTyping
+            // 
+            this.progressTyping.Location = new System.Drawing.Point(163, 347);
+            this.progressTyping.Name = "progressTyping";
+            this.progressTyping.Size = new System.Drawing.Size(100, 23);
+            this.progressTyping.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressTyping.TabIndex = 5;
+            this.progressTyping.Visible = false;
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumTurquoise;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(734, 607);
+            this.Controls.Add(this.progressTyping);
+            this.Controls.Add(this.lblCommonName);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -177,6 +200,7 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -192,6 +216,8 @@
         private System.Windows.Forms.TextBox tbChatTextBox;
         private System.Windows.Forms.Panel panelChatButtons;
         private System.Windows.Forms.TextBox tbChatHistory;
+        private System.Windows.Forms.Label lblCommonName;
+        private System.Windows.Forms.ProgressBar progressTyping;
     }
 }
 

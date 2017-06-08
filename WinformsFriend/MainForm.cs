@@ -28,14 +28,6 @@ namespace WinformsFriend
             InitializeComponent();
         }
 
-        private void InitOfp()
-        {
-            overseer = Server.Overseer;
-            overseer.Speaking.DebugMessage += Speaking_DebugMessage;
-            overseer.Speaking.HomeMessage += Speaking_HomeMessage;
-            overseer.Speaking.SetQuickReplies += Speaking_SetQuickReplies;
-        }
-
         private void Speaking_SetQuickReplies(Core.Conversation.QuickReply[] obj)
         {
             Ui(() =>
@@ -89,12 +81,36 @@ namespace WinformsFriend
             Ui(() => { 
                 this.lbSystemLog.Items.Add(obj);
                 this.lbSystemLog.TopIndex = this.lbSystemLog.Items.Count - 1;
+                UpdateParatext();
             });
+        }
+
+        private void UpdateParatext()
+        {
+            this.Text = this.friend.Memory.Persistent.CommonName + " - Open Friend Project Home";
+            this.lblCommonName.Text = this.friend.Memory.Persistent.CommonName;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            InitOfp();
+            overseer = Server.Overseer;
+            overseer.Speaking.DebugMessage += Speaking_DebugMessage;
+            friend.Speaking.Message += Speaking_HomeMessage;
+            friend.Speaking.QuickRepliesSet += Speaking_SetQuickReplies;
+            friend.Speaking.TypingBegan += Speaking_TypingBegan;
+            friend.Speaking.TypingEnded += Speaking_TypingEnded;
+            UpdateParatext();
+        }
+
+        private void Speaking_TypingEnded()
+        {
+            Ui(() =>
+                this.progressTyping.Visible = false);
+        }
+
+        private void Speaking_TypingBegan()
+        {
+            Ui(() => this.progressTyping.Visible = true);
         }
 
         private async void tbChatTextBox_KeyUp(object sender, KeyEventArgs e)

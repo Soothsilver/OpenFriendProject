@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core
 {
-    abstract class ProcessorCode
+    public abstract class ProcessorCode
     {
         protected Overseer Overseer { get; }
 

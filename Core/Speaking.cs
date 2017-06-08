@@ -17,8 +17,6 @@ namespace Core
 
 
         public event Action<string> DebugMessage;
-        public event Action<string> HomeMessage;
-        public event Action<QuickReply[]> SetQuickReplies;
 
         public Speaking(Overseer overseer)
         {
@@ -56,7 +54,7 @@ namespace Core
                 await PostJsonMessage(contents);
             }
           
-              HomeMessage?.Invoke(url);
+             friend.Speaking.Say(url);
             
         }
         public async Task SenderAction(Friend friend, MessengerSenderAction action)
@@ -65,8 +63,14 @@ namespace Core
             switch (action)
             {
                 case MessengerSenderAction.MarkSeen: senderAction = "mark_seen"; break;
-                case MessengerSenderAction.TypingOff: senderAction = "typing_off"; break;
-                case MessengerSenderAction.TypingOn: senderAction = "typing_on"; break;
+                case MessengerSenderAction.TypingOff:
+                    senderAction = "typing_off";
+                    friend.Speaking.EndTyping();
+                    break;
+                case MessengerSenderAction.TypingOn:
+                    senderAction = "typing_on";
+                    friend.Speaking.BeginTyping();
+                    break;
             }
             if (friend.IsFacebook)
             {
@@ -81,14 +85,14 @@ namespace Core
                 await PostJsonMessage(contents);
             }
         }
-        public async Task SendMessage(Friend friend, string message, QuickReply[] quickReplies = null)
+        public async Task SendMessage(Friend friend, string message, QuickReply[] quickReplies = null, bool honorRealisticTypingSpeed = true)
         {
             overseer.Speaking.Debug("Saying: " + message);
-            if (friend.HasRealisticTypingSpeed)
+            if (friend.HasRealisticTypingSpeed && honorRealisticTypingSpeed)
             {
                 await SenderAction(friend, MessengerSenderAction.MarkSeen);
                 await SenderAction(friend, MessengerSenderAction.TypingOn);
-                await Task.Delay(message.Length * 1000 / 18);
+                await Task.Delay(Math.Min(message.Length * 1000 / 36, 3000));
                 await SenderAction(friend, MessengerSenderAction.TypingOff);
             }
             if (friend.IsFacebook)
@@ -108,9 +112,9 @@ namespace Core
                 };
                 await PostJsonMessage(contents);
             }
-           
-            HomeMessage?.Invoke(message);
-            SetQuickReplies?.Invoke(quickReplies);
+
+            friend.Speaking.Say(message);
+            friend.Speaking.SetQuickReplies(quickReplies);
             
         }
 
@@ -130,6 +134,11 @@ namespace Core
             var response = await client.PostAsync("https://graph.facebook.com/v2.6/me/messenger_profile?access_token=" + PageAccessToken, content);
             string responseString = await response.Content.ReadAsStringAsync();
             overseer.Speaking.Debug("Response: " + response.StatusCode);
+        }
+
+        public Task SendSystemMessage(Friend friend, string message)
+        {
+            return SendMessage(friend, "SYSTEM: " + message, honorRealisticTypingSpeed: false);
         }
     }
 

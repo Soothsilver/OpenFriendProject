@@ -7,8 +7,9 @@ namespace Core
     {
         public string InternalId;
         public string CommonName = "Daina";
-        public string CaretakerName = "Petr";
+        public string CaretakerName = "friend";
         public string FacebookId;
+        public string TelegramName;
 
         public LongTermMemory()
         {

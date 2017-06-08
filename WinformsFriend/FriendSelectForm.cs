@@ -23,6 +23,10 @@ namespace WinformsFriend
         private void FriendSelectForm_Load(object sender, EventArgs e)
         {
             ReloadFriends();
+            if (this.lbFriends.Items.Count > 0)
+            {
+                this.lbFriends.SelectedIndex = 0;
+            }
         }
         
 

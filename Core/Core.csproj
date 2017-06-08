@@ -56,6 +56,8 @@
     <Compile Include="Alice\Alice.cs" />
     <Compile Include="Auxiliary\Auxiliary.cs" />
     <Compile Include="Configuration.cs" />
+    <Compile Include="Conversations\MergeConversation.cs" />
+    <Compile Include="ProcessorCodes\MergeGuidProcessorCode.cs" />
     <Compile Include="Endpoints\FacebookEndpoint.cs" />
     <Compile Include="Endpoints\HomeEndpoint.cs" />
     <Compile Include="Facebook\CallbackEnvelope.cs" />
@@ -67,10 +69,13 @@
     <Compile Include="Conversation\Line.cs" />
     <Compile Include="Facebook\MessengerSettings.cs" />
     <Compile Include="Auxiliary\Ini.cs" />
+    <Compile Include="Friends\FriendMouth.cs" />
     <Compile Include="Memory\MemoryStorage.cs" />
     <Compile Include="Memory\LongTermMemory.cs" />
     <Compile Include="ProcessorCodes\AliceProcessorCode.cs" />
     <Compile Include="ProcessorCodes\CommandsProcessorCode.cs" />
+    <Compile Include="ProcessorCodes\Commands\AllCommands.cs" />
+    <Compile Include="ProcessorCodes\Commands\Command.cs" />
     <Compile Include="ProcessorCodes\ConversationProcessorCode.cs" />
     <Compile Include="ProcessorCodes\DefaultProcessorCode.cs" />
     <Compile Include="Friends\Friend.cs" />
@@ -82,6 +87,7 @@
     <Compile Include="Overseer.cs" />
     <Compile Include="Friends\Persons.cs" />
     <Compile Include="ProcessorCodes\ProcessorCode.cs" />
+    <Compile Include="ProcessorCodes\TemporaryProcessorCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Senses.cs" />
     <Compile Include="Speaking.cs" />

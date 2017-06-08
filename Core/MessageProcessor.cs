@@ -25,11 +25,19 @@ namespace Core
 
         public async Task ProcessIncomingMessage(Friend friend, string text)
         {
+            for(int i = friend.TemporaryProcessors.Count -1; i>=0;i--)
+            {
+                var code = friend.TemporaryProcessors[i];
+                if (await code.ProcessMessage(friend, text))
+                {
+                    return;
+                }
+            }
             foreach (var code in this.Processors)
             {
                 if (await code.ProcessMessage(friend, text))
                 {
-                    break;
+                    return;
                 }
             }
         }

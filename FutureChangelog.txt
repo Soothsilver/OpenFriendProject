@@ -1,0 +1,6 @@
+DONE: Add friend name to title and below picture
+DONE: Change caretaker default
+Add Telegram
+DONE: Add information about typing to Home
+DONE: Make system messages faster
+DONE: Join Facebook with Home
