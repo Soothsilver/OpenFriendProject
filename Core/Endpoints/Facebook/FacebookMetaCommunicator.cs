@@ -49,7 +49,7 @@ namespace Core
                         string trimmed = line.Trim();
                         string[] split = trimmed.Split(new char[] {' '}, 2, StringSplitOptions.RemoveEmptyEntries);
                         lastIdReceived = int.Parse(split[0]);
-                        await overseer.Senses.IncomingCallback(split[1]);
+                        overseer.Facebook.IncomingCallback(split[1]);
                     }
 #if !DEBUG
                 }

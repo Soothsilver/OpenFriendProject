@@ -9,7 +9,7 @@ namespace Core
         public string CommonName = "Daina";
         public string CaretakerName = "friend";
         public string FacebookId;
-        public string TelegramName;
+        public int TelegramId;
 
         public LongTermMemory()
         {

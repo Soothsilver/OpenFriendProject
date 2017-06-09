@@ -32,7 +32,7 @@ namespace Core.MessengerSettings
 
         public async void UpdateMessengerSettings()
         {
-            await _overseer.Speaking.PostJsonProfileApiMessage(new
+            await _overseer.Facebook.PostJsonProfileApiMessage(new
             {
                 Greeting = new[]
                 {
@@ -43,14 +43,14 @@ namespace Core.MessengerSettings
                     }
                 }
             });
-            await _overseer.Speaking.PostJsonProfileApiMessage(new
+            await _overseer.Facebook.PostJsonProfileApiMessage(new
             {
                 Get_started = new
                 {
                     Payload = GetStartedPayload
                 }
             });
-            await _overseer.Speaking.PostJsonProfileApiMessage(new
+            await _overseer.Facebook.PostJsonProfileApiMessage(new
             {
                 Persistent_menu = new[]
                 {

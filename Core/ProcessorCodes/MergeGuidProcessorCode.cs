@@ -27,10 +27,10 @@ namespace Core.ProcessorCodes
 
                     }
                     // Merge telegram
-                    if (friend.Memory.Persistent.TelegramName != null)
+                    if (friend.Memory.Persistent.TelegramId != 0)
                     {
-                        fr.Memory.Persistent.TelegramName = friend.Memory.Persistent.TelegramName;
-                        friend.Memory.Persistent.TelegramName = null;
+                        fr.Memory.Persistent.TelegramId = friend.Memory.Persistent.TelegramId;
+                        friend.Memory.Persistent.TelegramId = 0;
                         friend.SavePersistentMemory();
                         fr.SavePersistentMemory();
                         await Overseer.Speaking.SendSystemMessage(friend, "Telegram account correspondence changed.");

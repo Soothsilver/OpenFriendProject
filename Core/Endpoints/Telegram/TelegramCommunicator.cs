@@ -31,9 +31,9 @@ namespace Core.Endpoints.Telegram
             overseer.Speaking.Debug("Running loop task...");
             Task.Run(() => Loop());
         }
-        private string GetUrlFromQuery(string methodName, string query)
+        public static string GetUrlFromQuery(string methodName, string query)
         {
-            return "https://api.telegram.org/bot" + Configuration.TelegramToken + "/" + methodName + (query != null ? " ? " + query : "");
+            return "https://api.telegram.org/bot" + Configuration.TelegramToken + "/" + methodName + (query != null ? "?" + query : "");
         }
 
         private async Task<string> Get(string address)
@@ -52,12 +52,24 @@ namespace Core.Endpoints.Telegram
                 {
 #endif
                 var response = await Get(GetUrlFromQuery("getUpdates",
-                        lastUpdateId == -1 ? null : "offset=" + (lastUpdateId + 1)))
+                        "timeout=5"+
+                        (lastUpdateId == -1 ? "" : "&offset=" + (lastUpdateId + 1))
+                ))
                     ;
                 var updates = JsonConvert.DeserializeObject<TelegramUpdates>(response, Auxiliary.JsonSerializerSettings);
-                foreach(var update in updates.Result)
+                if (!updates.Ok)
                 {
-
+                    overseer.Speaking.Debug("Telegram error: " + updates.Description);
+                    await Task.Delay(2000);
+                    continue;
+                }
+                foreach (var update in updates.Result)
+                {
+                    overseer.Telegram.HandleUpdate(update);
+                    if (update.Update_id > lastUpdateId)
+                    {
+                        lastUpdateId = update.Update_id;
+                    }
                 }
                 ;
 #if !DEBUG

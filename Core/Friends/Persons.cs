@@ -32,6 +32,23 @@ namespace Core
                 return f;
             }
         }
+        public Friend GetFriendFromTelegramId(int fromId)
+        {
+            lock (Friends)
+            {
+                foreach (var friend in Friends)
+                {
+                    if (friend.Memory.Persistent.TelegramId == fromId)
+                    {
+                        return friend;
+                    }
+                }
+                Friend f = new Friend(overseer);
+                f.Memory.Persistent.TelegramId = fromId;
+                Friends.Add(f);
+                return f;
+            }
+        }
 
         public void Reload()
         {
@@ -63,5 +80,7 @@ namespace Core
                 Friends.Add(friend);
             }
         }
+
+       
     }
 }

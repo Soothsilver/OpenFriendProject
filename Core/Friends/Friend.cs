@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Endpoints;
 using Core.ProcessorCodes;
 
 namespace Core
@@ -8,6 +9,17 @@ namespace Core
     public class Friend
     {
         public bool IsFacebook => Memory.Persistent.FacebookId != null;
+        public bool IsTelegram => Memory.Persistent.TelegramId != 0;
+
+        public IEnumerable<IEndpoint> Endpoints
+        {
+            get
+            {
+                if (IsFacebook) yield return overseer.Facebook;
+                if (IsTelegram) yield return overseer.Telegram;
+                yield return overseer.Home;
+            }
+        }
 
         public bool HasRealisticTypingSpeed => true;
 

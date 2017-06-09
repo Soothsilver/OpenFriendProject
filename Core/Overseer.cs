@@ -18,6 +18,7 @@ namespace Core
         public MessengerSettings.MessengerSettings Settings;
         public AimlCore Aiml;
         public FacebookEndpoint Facebook;
+        public TelegramEndpoint Telegram;
         public HomeEndpoint Home;
 
         public Overseer()
@@ -30,6 +31,7 @@ namespace Core
             this.Aiml = new Core.Aiml.AimlCore(this);
             this.Home = new HomeEndpoint(this);
             this.Facebook = new FacebookEndpoint(this);
+            this.Telegram = new TelegramEndpoint(this);
 
             FacebookMetaCommunicator mc = new FacebookMetaCommunicator(this);
             mc.StartLoop();

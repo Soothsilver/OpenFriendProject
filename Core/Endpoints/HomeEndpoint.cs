@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Conversation;
 
 namespace Core.Endpoints
 {
-    public class HomeEndpoint
+    public class HomeEndpoint : IEndpoint
     {
         private Overseer overseer;
 
@@ -15,9 +16,36 @@ namespace Core.Endpoints
             this.overseer = overseer;
         }
 
-        public async Task SendMessage(Friend friend, string text)
+        public void SendMessage(Friend friend, string text)
         {
-            await overseer.Senses.IncomingTextMessage(friend, text);
+            overseer.Senses.IncomingTextMessage(friend, text);
+        }
+
+        public Task SendImageUrl(Friend friend, string url)
+        {
+            friend.Speaking.Say(url);
+            return Task.FromResult(0);
+        }
+
+        public Task SendMessage(Friend friend, string message, QuickReply[] quickReplies)
+        {
+            friend.Speaking.Say(message);
+            friend.Speaking.SetQuickReplies(quickReplies);
+            return Task.FromResult(0);
+        }
+
+        public Task SenderAction(Friend friend, NonMessageAction action)
+        {
+            switch (action)
+            {
+                case NonMessageAction.TypingOff:
+                    friend.Speaking.EndTyping();
+                    break;
+                case NonMessageAction.TypingOn:
+                    friend.Speaking.BeginTyping();
+                    break;
+            }
+            return Task.FromResult(0);
         }
     }
 }

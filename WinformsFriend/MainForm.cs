@@ -51,10 +51,10 @@ namespace WinformsFriend
             });
         }
 
-        private async void B_Click(object sender, EventArgs e)
+        private void B_Click(object sender, EventArgs e)
         {
             this.panelChatButtons.Controls.Clear();
-            await SendChat((sender as Button).Text);
+            SendChat((sender as Button).Text);
         }
 
         private void Speaking_HomeMessage(string obj)
@@ -113,29 +113,29 @@ namespace WinformsFriend
             Ui(() => this.progressTyping.Visible = true);
         }
 
-        private async void tbChatTextBox_KeyUp(object sender, KeyEventArgs e)
+        private void tbChatTextBox_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 e.Handled = true;
                 string txt = this.tbChatTextBox.Text;
                 this.tbChatTextBox.Text = "";
-                await SendChat(txt);
+                SendChat(txt);
             }
         }
 
-        private async Task SendChat(string text)
+        private void SendChat(string text)
         {
             this.tbChatHistory.AppendText(Environment.NewLine + "You: " + text);
-            await overseer.Home.SendMessage(friend, text);
+            overseer.Home.SendMessage(friend, text);
         }
 
-        private async void bSendChat_Click(object sender, EventArgs e)
+        private void bSendChat_Click(object sender, EventArgs e)
         {
             string txt = this.tbChatTextBox.Text;
             this.tbChatTextBox.Text = "";
             this.tbChatTextBox.Focus();
-            await SendChat(txt);
+            SendChat(txt);
         }
     }
 }

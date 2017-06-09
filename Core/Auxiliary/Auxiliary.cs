@@ -12,7 +12,18 @@ namespace Core
     {
         public static JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings()
         {
-            ContractResolver = new CamelCasePropertyNamesContractResolver()
+            ContractResolver = new DefaultContractResolver()
+            {
+                NamingStrategy = new SnakeCaseNamingStrategy()
+            }
+
         };
+        public static async Task ForEachAsync<T>(this IEnumerable<T> list, Func<T, Task> func)
+        {
+            foreach (var value in list)
+            {
+                await func(value);
+            }
+        }
     }
 }
