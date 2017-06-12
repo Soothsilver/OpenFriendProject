@@ -47,5 +47,11 @@ namespace Core.Endpoints
             }
             return Task.FromResult(0);
         }
+
+        public Task SendFile(Friend friend, string filename)
+        {
+            friend.Speaking.SendFilename(filename);
+            return Task.FromResult(0);
+        }
     }
 }

@@ -99,7 +99,16 @@ namespace WinformsFriend
             friend.Speaking.QuickRepliesSet += Speaking_SetQuickReplies;
             friend.Speaking.TypingBegan += Speaking_TypingBegan;
             friend.Speaking.TypingEnded += Speaking_TypingEnded;
+            friend.Speaking.FilenameSent += Speaking_FilenameSent;
             UpdateParatext();
+        }
+
+        private void Speaking_FilenameSent(string obj)
+        {
+            Ui(() =>
+            {
+                this.tbChatHistory.AppendText(Environment.NewLine + "File: " + obj);
+            });
         }
 
         private void Speaking_TypingEnded()

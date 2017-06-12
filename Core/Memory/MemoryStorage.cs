@@ -35,5 +35,11 @@ namespace Core
             serializer.Serialize(sw, memoryPersistent);
             sw.Close();
         }
+
+        public static string GetFilename(Friend friend)
+        {
+            EnsureFolderExists();
+            return Path.Combine(FolderName, friend.Memory.Persistent.InternalId + ".xml");
+        }
     }
 }

@@ -41,6 +41,7 @@
             this.lbSystemLog = new System.Windows.Forms.ListBox();
             this.lblCommonName = new System.Windows.Forms.Label();
             this.progressTyping = new System.Windows.Forms.ProgressBar();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -178,6 +179,10 @@
             this.progressTyping.TabIndex = 5;
             this.progressTyping.Visible = false;
             // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Filter = "XML files|*.xml";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,6 +223,7 @@
         private System.Windows.Forms.TextBox tbChatHistory;
         private System.Windows.Forms.Label lblCommonName;
         private System.Windows.Forms.ProgressBar progressTyping;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

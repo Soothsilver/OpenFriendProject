@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -74,6 +75,22 @@ namespace Core.Endpoints.Telegram
                 });
             }
         }
+
+        public async Task SendFile(Friend friend, string filename)
+        {
+
+            string url = TelegramCommunicator.GetUrlFromQuery("sendDocument", null);
+            using (var form = new MultipartFormDataContent())
+            {
+                form.Add(new StringContent(friend.Memory.Persistent.TelegramId.ToString(), Encoding.UTF8), "chat_id");
+                using (FileStream fileStream = new FileStream(filename, FileMode.Open, FileAccess.Read))
+                {
+                    form.Add(new StreamContent(fileStream), "document", System.IO.Path.GetFileName(filename));
+                    await client.PostAsync(url, form);
+                }
+            }
+        }
+
         private async Task PostJsonMessage(string method, object contents)
         {
             var json = JsonConvert.SerializeObject(contents, Auxiliary.JsonSerializerSettings);

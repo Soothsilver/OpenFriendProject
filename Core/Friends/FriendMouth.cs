@@ -16,6 +16,7 @@ namespace Core
         public event Action<QuickReply[]> QuickRepliesSet;
         public event Action TypingBegan;
         public event Action TypingEnded;
+        public event Action<string> FilenameSent;
 
         internal void BeginTyping()
         {
@@ -30,6 +31,10 @@ namespace Core
         {
             TypingEnded?.Invoke();
             Message?.Invoke(msg);
+        }
+        internal void SendFilename(string filename)
+        {
+            FilenameSent?.Invoke(filename);
         }
         internal void SetQuickReplies(QuickReply[] replies)
         {

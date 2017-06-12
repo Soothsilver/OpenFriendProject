@@ -56,5 +56,10 @@ namespace Core
         {
             return SendMessage(friend, "SYSTEM: " + message, honorRealisticTypingSpeed: false);
         }
+
+        public async Task SendFile(Friend friend, string filename)
+        {
+            await friend.Endpoints.ForEachAsync((ep) => ep.SendFile(friend, filename));
+        }
     }
 }

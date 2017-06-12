@@ -82,7 +82,41 @@ namespace Core.ProcessorCodes.Commands
             new Command("merge", "Merges this IM account to another friend.", async (f, s, o) =>
             {
                 await f.Memory.MoveConversationTo(MergeConversation.GetBeginning(), o);
-            })
+            }),
+            new Command("export", "Exports the full memory of the friend to a file.", async (f,s,o)=>
+            {
+                await o.Speaking.SendFile(f, MemoryStorage.GetFilename(f));
+                await o.Speaking.SendMessage(f, "That's all the non-hardwired information I possess.");
+            }),
+            new Command("disconnect", "Type '/disconnect Facebook' or '/disconnect Telegram' to end the connection between that account and this friend.",
+                async (f, m, o) =>
+                {
+                    if (m.Length > "/disconnect ".Length)
+                    {
+
+                        string what = m.Substring("/disconnect ".Length);
+                        if (what.ToLower() == "facebook")
+                        {
+                            await o.Speaking.SendSystemMessage(f, "Disconnecting Facebook.");
+                            f.Memory.Persistent.FacebookId = null;
+                            f.SavePersistentMemory();
+                        }
+                        else if (what.ToLower() == "telegram")
+                        {
+                            await o.Speaking.SendSystemMessage(f, "Disconnecting Telegram.");
+                            f.Memory.Persistent.TelegramId = 0;
+                            f.SavePersistentMemory();
+                        }
+                        else
+                        {
+                            await o.Speaking.SendSystemMessage(f, "That service is not known.");
+                        }
+                    }
+                    else
+                    {
+                        await o.Speaking.SendSystemMessage(f, "Type '/disconnect Facebook' or '/disconnect Telegram' to end the connection between that account and this friend.");
+                    }
+                })
         };
     }
 }

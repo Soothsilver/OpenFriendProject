@@ -126,6 +126,11 @@ namespace Core.Endpoints
             }
         }
 
+        public Task SendFile(Friend friend, string filename)
+        {
+            return SendMessage(friend, "FILE CONTENTS:" + Environment.NewLine + System.IO.File.ReadAllText(filename), null);
+        }
+
         private async Task PostJsonMessage(object contents)
         {
             var json = JsonConvert.SerializeObject(contents, Auxiliary.JsonSerializerSettings);
