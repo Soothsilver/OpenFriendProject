@@ -8,7 +8,8 @@ namespace Core
 {
     public abstract class ConversationNode
     {
-       
+        public ConversationNode FollowingNode;
+
         public abstract Task Enter(Overseer overseer, Friend friend);
 
         public virtual Task<bool> ProcessMessage(Overseer overseer, Friend friend, string message)

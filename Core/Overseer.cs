@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Aiml;
+using Core.Conversation;
 using Core.Endpoints;
 using Core.Endpoints.Telegram;
 
@@ -19,6 +20,8 @@ namespace Core
         public AimlCore Aiml;
         public FacebookEndpoint Facebook;
         public TelegramEndpoint Telegram;
+        public DialogueLoader DialogueLoader;
+        public LoadedConversations LoadedConversations;
         public HomeEndpoint Home;
 
         public Overseer()
@@ -32,6 +35,8 @@ namespace Core
             this.Home = new HomeEndpoint(this);
             this.Facebook = new FacebookEndpoint(this);
             this.Telegram = new TelegramEndpoint(this);
+            this.DialogueLoader = new DialogueLoader();
+            this.LoadedConversations = new LoadedConversations(this);
 
             FacebookMetaCommunicator mc = new FacebookMetaCommunicator(this);
             mc.StartLoop();

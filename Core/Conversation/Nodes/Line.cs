@@ -9,7 +9,6 @@ namespace Core.Conversation
     class Line : ConversationNode
     {
         private readonly string _line;
-        private ConversationNode _then;
         private readonly Func<ConversationNode> _thenFunc;
 
         public Line (string line)
@@ -19,7 +18,7 @@ namespace Core.Conversation
         public Line(string line, ConversationNode then)
         {
             _line = line;
-            _then = then;
+            FollowingNode = then;
         }
         public Line(string line, Func<ConversationNode> then)
         {
@@ -31,9 +30,9 @@ namespace Core.Conversation
             await overseer.Speaking.SendMessage(friend, _line);
             if (_thenFunc != null)
             {
-                _then = _thenFunc();
+                FollowingNode = _thenFunc();
             }
-            await friend.Memory.MoveConversationTo(_then, overseer);
+            await friend.Memory.MoveConversationTo(FollowingNode, overseer);
         }
     }
 }

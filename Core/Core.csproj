@@ -65,7 +65,11 @@
     <Compile Include="Auxiliary\Auxiliary.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Conversations\MergeConversation.cs" />
+    <Compile Include="Conversation\DialogueLoader.cs" />
+    <Compile Include="Conversation\LoadedConversations.cs" />
     <Compile Include="Conversation\MacroReplacer.cs" />
+    <Compile Include="Conversation\Nodes\DoNothingNode.cs" />
+    <Compile Include="Conversation\SCL\SclLine.cs" />
     <Compile Include="Endpoints\IEndpoint.cs" />
     <Compile Include="Endpoints\Telegram\TelegramCommunicator.cs" />
     <Compile Include="Endpoints\Telegram\TelegramEndpoint.cs" />
@@ -75,12 +79,12 @@
     <Compile Include="Endpoints\Facebook\FacebookEndpoint.cs" />
     <Compile Include="Endpoints\HomeEndpoint.cs" />
     <Compile Include="Endpoints\Facebook\CallbackEnvelope.cs" />
-    <Compile Include="Conversation\ActionNode.cs" />
-    <Compile Include="Conversation\ImageLine.cs" />
-    <Compile Include="Conversation\Branch.cs" />
-    <Compile Include="Conversation\ConversationNode.cs" />
+    <Compile Include="Conversation\Nodes\ActionNode.cs" />
+    <Compile Include="Conversation\Nodes\ImageLine.cs" />
+    <Compile Include="Conversation\Nodes\BranchNode.cs" />
+    <Compile Include="Conversation\Nodes\ConversationNode.cs" />
     <Compile Include="Conversations\BookConversation.cs" />
-    <Compile Include="Conversation\Line.cs" />
+    <Compile Include="Conversation\Nodes\Line.cs" />
     <Compile Include="Endpoints\Facebook\MessengerSettings.cs" />
     <Compile Include="Auxiliary\Ini.cs" />
     <Compile Include="Friends\FriendMouth.cs" />
@@ -121,7 +125,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Conversations\set-locale.txt" />
+    <Content Include="Conversations\set-locale.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

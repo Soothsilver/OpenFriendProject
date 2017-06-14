@@ -46,6 +46,7 @@ namespace Core.Endpoints.Telegram
                 {
                     ChatId = friend.Memory.Persistent.TelegramId,
                     Text = message,
+                    ParseMode = "Markdown",
                     ReplyMarkup = new
                     {
                         RemoveKeyboard = true
@@ -58,6 +59,7 @@ namespace Core.Endpoints.Telegram
                 {
                     ChatId = friend.Memory.Persistent.TelegramId,
                     Text = message,
+                    ParseMode = "Markdown",
                     ReplyMarkup = new
                     {
                         ResizeKeyboard = true,

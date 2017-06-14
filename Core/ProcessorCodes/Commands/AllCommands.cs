@@ -126,7 +126,11 @@ namespace Core.ProcessorCodes.Commands
                     {
                         await o.Speaking.SendSystemMessage(f, "Type '/disconnect Facebook' or '/disconnect Telegram' to end the connection between that account and this friend.");
                     }
-                })
+                }),
+            new Command("setlocale", "Changes the friend's real-world location and your timezone.", async (f,s,o)=>
+            {
+                await f.Memory.MoveConversationTo(o.LoadedConversations.All["set-locale"], o);
+            })
         };
     }
 }
