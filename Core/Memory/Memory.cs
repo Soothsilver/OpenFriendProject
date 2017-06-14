@@ -18,6 +18,7 @@ namespace Core
             this.Persistent = new LongTermMemory();
         }
         public ConversationNode CurrentConversation;
+        public Stack<ConversationNode> ConversationStack = new Stack<ConversationNode>();
         public bool TalkingToAlice;
 
         public async Task MoveConversationTo(ConversationNode node, Overseer overseer)
@@ -27,10 +28,14 @@ namespace Core
             {
                 await CurrentConversation.Enter(overseer, this.Friend);
             }
+            else if (ConversationStack.Count > 0)
+            {
+                await ConversationStack.Pop().Enter(overseer, this.Friend);
+            }
             else
             {
                 await overseer.Speaking.SendMessage(this.Friend,
-                    "Say 'hi' when you want to talk again!",
+                    "I have no further topics. Say 'hi' when you want to talk again.",
                     new[] {  new Conversation.QuickReply("Hello, {name}!") });
             }
         }

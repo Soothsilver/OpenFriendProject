@@ -130,6 +130,16 @@ namespace Core.ProcessorCodes.Commands
             new Command("setlocale", "Changes the friend's real-world location and your timezone.", async (f,s,o)=>
             {
                 await f.Memory.MoveConversationTo(o.LoadedConversations.All["set-locale"], o);
+            }),
+            new Command("bio", "Says basic vital stats.", async (f,s,o)=>
+            {
+                await o.Speaking.SendMessage(f, "Hello! My name is " + f.Memory.Persistent.CommonName + ".");
+                await o.Speaking.SendMessage(f, "My ID is " + f.Memory.Persistent.InternalId + ".");
+                await o.Speaking.SendMessage(f, "My caretaker is my " + f.Memory.Persistent.CaretakerName + ".");
+                await o.Speaking.SendMessage(f, "I live in " + f.Memory.Persistent.Country + ".");
+                await o.Speaking.SendMessage(f,
+                    "My time offset from Open Friend Project servers is " +
+                    f.Memory.Persistent.CaretakersClockHasPlusThisManyHours + " hours.");
             })
         };
     }

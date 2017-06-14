@@ -28,8 +28,12 @@ namespace Core.Conversation
             string msg = message.ToLower();
             foreach(var reply in _possibleReplies)
             {
-                if (reply.Title.ToLower() == msg)
+                if (friend.MacroReplacer.ReplaceMacrosInOutgoingText(reply.Title).ToLower() == msg)
                 {
+                    if (this.FollowingNode != null)
+                    {
+                        friend.Memory.ConversationStack.Push(this.FollowingNode);
+                    }
                     await friend.Memory.MoveConversationTo(reply.WhatNext, overseer);
                     return true;
                 }

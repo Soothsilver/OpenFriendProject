@@ -12,13 +12,13 @@ namespace Core.Conversation
     {
         public ConversationNode LoadFromFile(string filename)
         {
-            Dictionary<string, ConversationNode> labeledNodes = new Dictionary<string, Core.ConversationNode>();
 
+            // Load text into unparsed SclLine
             string[] lines = System.IO.File.ReadAllLines(filename);
-            List<SclLine> sclLines = new List<SclLine>();
+            List<SclLexicalLine> sclLines = new List<SclLexicalLine>();
             foreach(var line in lines)
             {
-                var sclLine = SCL.SclLine.Parse(line);
+                var sclLine = SCL.SclLexicalLine.Parse(line);
                 if (sclLine != null)
                 {
                     sclLines.Add(sclLine);
@@ -27,34 +27,11 @@ namespace Core.Conversation
 
 
             int currentLine = 0;
-            ConversationNode firstNode = new DoNothingNode();
-            ConversationNode lastNode = firstNode;
-            while (currentLine < lines.Length)
-            {
-                ParseLine(sclLines, 0, ref lastNode, ref currentLine);
-            }
 
-            return firstNode;
-        }
+            SclParser p = new SclParser();
+            SclConversation c = p.ParseConversation(sclLines, 0, ref currentLine);
 
-        private void ParseLine(List<SclLine> lines, int atIndent, ref ConversationNode lastNode, ref int currentLine)
-        {
-            SclLine line = lines[currentLine];
-
-            // Menu
-            if (line.IndentCount > atIndent)
-            {
-                //ParseMenu()
-            }
-
-
-            // Basic line 
-            ConversationNode node = new Line(line.PureText);
-            lastNode.FollowingNode = node;
-            lastNode = node;
-
-            // Continue
-            currentLine++;
+            return c.ToConversationNode(c);
         }
     }
 }

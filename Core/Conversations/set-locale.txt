@@ -16,15 +16,15 @@ You live in {$country}, really?
 		/special:SetCountry {$country}
 		Understood.
 		Now let me check the timezone, please.
-		/goto timezone
+		/escape timezone
 	-No.
 		Okay. Then please type the full name of the country where you live.
-		/goto country
+		/escape country
 /label timezone
 What's the time where you live right now? 
 Use the HH:MM format, please, using 24-hour clock.
 /input time
-/special:SetTimezone {$time}
+/special:SetTimeOffsetFromTime {$time}
 Thanks! 
 I'm really looking forward to living in my new home!
 Hopefully we'll make many nice memories together!

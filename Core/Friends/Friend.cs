@@ -35,7 +35,7 @@ namespace Core
             Memory.Persistent = memory;
         }
 
-        public bool HasRealisticTypingSpeed => true;
+        public bool HasRealisticTypingSpeed => false;
 
         public bool IsFacebook => Memory.Persistent.FacebookId != null;
         public bool IsTelegram => Memory.Persistent.TelegramId != 0;

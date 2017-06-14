@@ -51,7 +51,7 @@ namespace Core
             {
                 await SenderAction(friend, NonMessageAction.MarkSeen);
                 await SenderAction(friend, NonMessageAction.TypingOn);
-                await Task.Delay(Math.Min(message.Length * 1000 / 36, 3000));
+                await Task.Delay(Math.Min(message.Length * 1000 / 50, 3000));
                 await SenderAction(friend, NonMessageAction.TypingOff);
             }
             await friend.Endpoints.ForEachAsync((ep) => ep.SendMessage(friend, friend.MacroReplacer.ReplaceMacrosInOutgoingText(message), quickReplies));
@@ -61,7 +61,7 @@ namespace Core
 
         public Task SendSystemMessage(Friend friend, string message)
         {
-            return SendMessage(friend, "SYSTEM MESSAGE:" + Environment.NewLine + message, honorRealisticTypingSpeed: false);
+            return SendMessage(friend, "_SYSTEM MESSAGE:" + Environment.NewLine + message + "_", honorRealisticTypingSpeed: false);
         }
 
         public async Task SendFile(Friend friend, string filename)

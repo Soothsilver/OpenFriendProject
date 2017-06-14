@@ -1,0 +1,1 @@
+﻿java -jar D:\BINARY\antlr.jar  -encoding utf8 scl.g4

@@ -12,11 +12,16 @@ namespace Core.Conversation
 
         public string ReplaceMacrosInOutgoingText(string text)
         {
-            return
+            text =
                 text
                     .Replace("{name}", _owner.Memory.Persistent.CommonName)
                     .Replace("{you}", _owner.Memory.Persistent.CaretakerName)
                 ;
+            foreach(var variable in _owner.Memory.Persistent.Variables)
+            {
+                text = text.Replace("{$" + variable.Key + "}", variable.Value);
+            }
+            return text;
 
         }
 
