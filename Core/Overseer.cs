@@ -7,6 +7,7 @@ using Core.Aiml;
 using Core.Conversation;
 using Core.Endpoints;
 using Core.Endpoints.Telegram;
+using Core.Freeform;
 
 namespace Core
 {
@@ -23,6 +24,7 @@ namespace Core
         public DialogueLoader DialogueLoader;
         public LoadedConversations LoadedConversations;
         public HomeEndpoint Home;
+        public FreeformPhrases FreeformPhrases;
 
         public Overseer()
         {
@@ -36,6 +38,7 @@ namespace Core
             this.Facebook = new FacebookEndpoint(this);
             this.Telegram = new TelegramEndpoint(this);
             this.DialogueLoader = new DialogueLoader();
+            this.FreeformPhrases = new Freeform.FreeformPhrases(this);
             this.LoadedConversations = new LoadedConversations(this);
 
             FacebookMetaCommunicator mc = new FacebookMetaCommunicator(this);

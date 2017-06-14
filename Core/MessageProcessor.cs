@@ -18,6 +18,7 @@ namespace Core
             this.Processors.Add(new CommandsProcessorCode(overseer));
             this.Processors.Add(new AliceProcessorCode(overseer));
             this.Processors.Add(new ConversationProcessorCode(overseer));
+            this.Processors.Add(new AsunaProcessorCode(overseer));
             this.Processors.Add(new HelloProcessorCode(overseer));
             this.Processors.Add(new GoodbyeProcessorCode(overseer));
             this.Processors.Add(new DefaultProcessorCode(overseer));

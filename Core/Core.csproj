@@ -38,6 +38,10 @@
       <HintPath>..\packages\Antlr4.Runtime.4.6.1\lib\net45\Antlr4.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Fastenshtein, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fastenshtein.1.0.0.4\lib\net40-client\Fastenshtein.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Jint, Version=2.9.1.0, Culture=neutral, PublicKeyToken=2e92ba9c8d81157f, processorArchitecture=MSIL">
       <HintPath>..\packages\Jint.2.9.1\lib\portable-net40+sl50+win+WindowsPhoneApp81+wp80\Jint.dll</HintPath>
       <Private>True</Private>
@@ -51,6 +55,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -68,6 +73,7 @@
     <Compile Include="Alice\AimlCore.cs" />
     <Compile Include="Alice\Alice.cs" />
     <Compile Include="Auxiliary\Auxiliary.cs" />
+    <Compile Include="Auxiliary\R.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Conversations\MergeConversation.cs" />
     <Compile Include="Conversation\DialogueLoader.cs" />
@@ -89,8 +95,10 @@
     <Compile Include="Endpoints\Telegram\TelegramCommunicator.cs" />
     <Compile Include="Endpoints\Telegram\TelegramEndpoint.cs" />
     <Compile Include="Endpoints\Telegram\TelegramUpdates.cs" />
+    <Compile Include="Freeform\FreeformPhrases.cs" />
     <Compile Include="Memory\SerializableDictionary.cs" />
     <Compile Include="NonMessageAction.cs" />
+    <Compile Include="ProcessorCodes\AsunaProcessorCode.cs" />
     <Compile Include="ProcessorCodes\MergeGuidProcessorCode.cs" />
     <Compile Include="Endpoints\Facebook\FacebookEndpoint.cs" />
     <Compile Include="Endpoints\HomeEndpoint.cs" />

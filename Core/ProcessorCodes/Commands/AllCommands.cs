@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Conversation;
 using Core.Conversations;
 
 namespace Core.ProcessorCodes.Commands
@@ -18,8 +19,13 @@ namespace Core.ProcessorCodes.Commands
             }),
             new Command("tips", "Says some random sentence that the friend responds to.", async(f,m,o)=>
             {
+                var phrases = o.FreeformPhrases.All.GetRandoms(3).ToList();
                 await o.Speaking.SendMessage(f,
-                    "Type '/books' to start a conversation about books or '/alice' to start a freeform conversation with an AIML subsystem.");
+                    "Type '/books' to start a conversation about books or '/alice' to start a freeform conversation with an AIML subsystem. Alternatively, try one of these phrases: " + Environment.NewLine + Environment.NewLine
+
+                    + string.Join(Environment.NewLine, phrases.Select(phr => phr.Phrase)),
+                    phrases.Select(phr => new QuickReply(phr.Phrase)).ToArray()
+                    );
             }),
             new Command("alice", "Enters Alice mode.", async (f,m,o)=>
             {

@@ -10,6 +10,14 @@ namespace Core
 {
     public static class Auxiliary
     {
+        public static string ForMachineComparison(this string text)
+        {
+            return text.Replace(" ", "")
+                .ToLower()
+                .Replace(".", "")
+                .Replace("?", "");
+                ;
+        }
         public static JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings()
         {
             ContractResolver = new DefaultContractResolver()
