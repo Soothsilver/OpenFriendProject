@@ -1,6 +1,7 @@
+
 DONE: Add friend name to title and below picture
 DONE: Change caretaker default
-Add Telegram
+DONE:Add Telegram
 DONE: Add information about typing to Home
 DONE: Make system messages faster
 DONE: Join Facebook with Home
@@ -8,3 +9,71 @@ Use "CallbackQuery" instead of "Callback_query"
 Add an actual nice conversation
 Add birth sequence
 Add some evolution, such as hobbies
+Add first campaign
+
+
+From "Wake me up Asuna":
+
+
+What time is it?
+What's the time?
+
+What's the date today?
+What day is it today?
+
+What's the weather like today?
+
+What's the weather like tomorrow?
+
+Tell me a joke.
+Say a joke.
+
+Give me a riddle.
+Say a riddle.
+Ask a riddle.
+
+When is your birthday?
+When were you born?
+
+Let's play!
+Thank you.
+What are you doing now?
+Sing something.
+Talk to me.
+Cheer me up.
+Cool.
+How are you?
+Do your best.
+What's your name?
+You're beautiful.
+Take care.
+Let's play a game.
+Be by my side forever.
+I'm lonely.
+I'm tried.
+Where are you?
+Say my name.
+Were you sleeping?
+I want to sleep but I can't.
+I have nothing to do.
+I'm sad.
+When's my birthday?
+Look after me today.
+Do you like me?
+
+Morning.
+Good morning.
+
+I'm home.
+Hello.
+Long time no see.
+
+Good night.
+
+
+Bye.
+I'm leaving now.
+See you later.
+Bye for now.
+Goodbye.
+I'm heading out.

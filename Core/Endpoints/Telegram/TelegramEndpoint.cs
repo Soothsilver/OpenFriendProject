@@ -45,7 +45,11 @@ namespace Core.Endpoints.Telegram
                 await PostJsonMessage("sendMessage", new
                 {
                     ChatId = friend.Memory.Persistent.TelegramId,
-                    Text = message
+                    Text = message,
+                    ReplyMarkup = new
+                    {
+                        RemoveKeyboard = true
+                    }
                 });
             }
             else

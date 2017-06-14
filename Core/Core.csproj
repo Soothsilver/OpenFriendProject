@@ -65,6 +65,7 @@
     <Compile Include="Auxiliary\Auxiliary.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Conversations\MergeConversation.cs" />
+    <Compile Include="Conversation\MacroReplacer.cs" />
     <Compile Include="Endpoints\IEndpoint.cs" />
     <Compile Include="Endpoints\Telegram\TelegramCommunicator.cs" />
     <Compile Include="Endpoints\Telegram\TelegramEndpoint.cs" />
@@ -118,6 +119,9 @@
       <Project>{df1e9e2b-eae2-440c-8116-858f79d3a14c}</Project>
       <Name>AliceSubsystem</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Conversations\set-locale.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

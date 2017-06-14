@@ -31,7 +31,7 @@ namespace Core
             {
                 await overseer.Speaking.SendMessage(this.Friend,
                     "Say 'hi' when you want to talk again!",
-                    new[] {  new Conversation.QuickReply("Hello, Amethyst!") });
+                    new[] {  new Conversation.QuickReply("Hello, {name}!") });
             }
         }
     }

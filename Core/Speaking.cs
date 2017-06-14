@@ -39,6 +39,13 @@ namespace Core
         }
         public async Task SendMessage(Friend friend, string message, QuickReply[] quickReplies = null, bool honorRealisticTypingSpeed = true)
         {
+            if (quickReplies != null)
+            {
+                foreach (var reply in quickReplies)
+                {
+                    reply.Title = friend.MacroReplacer.ReplaceMacrosInOutgoingText(reply.Title);
+                }
+            }
             overseer.Speaking.Debug("Saying: " + message);
             if (friend.HasRealisticTypingSpeed && honorRealisticTypingSpeed)
             {
@@ -47,14 +54,14 @@ namespace Core
                 await Task.Delay(Math.Min(message.Length * 1000 / 36, 3000));
                 await SenderAction(friend, NonMessageAction.TypingOff);
             }
-            await friend.Endpoints.ForEachAsync((ep) => ep.SendMessage(friend, message, quickReplies));
+            await friend.Endpoints.ForEachAsync((ep) => ep.SendMessage(friend, friend.MacroReplacer.ReplaceMacrosInOutgoingText(message), quickReplies));
         }
 
 
 
         public Task SendSystemMessage(Friend friend, string message)
         {
-            return SendMessage(friend, "SYSTEM: " + message, honorRealisticTypingSpeed: false);
+            return SendMessage(friend, "SYSTEM MESSAGE:" + Environment.NewLine + message, honorRealisticTypingSpeed: false);
         }
 
         public async Task SendFile(Friend friend, string filename)

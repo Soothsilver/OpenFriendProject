@@ -17,7 +17,7 @@ namespace Core
         {
             if (message.ToLower().Contains("hello") || message.ToLower().Contains("hi") || message.ToLower().Contains("greeting"))
             {
-                await Overseer.Speaking.SendMessage(friend, "Hello to you, too, friend!");
+                await Overseer.Speaking.SendMessage(friend, "Hello to you, too, {you}!");
                 if (friend.Memory.CurrentConversation != null)
                 {
                     await Overseer.Speaking.SendMessage(friend, "Let's return to our previous conversation, okay?");

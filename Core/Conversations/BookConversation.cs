@@ -24,10 +24,10 @@ namespace Core.Conversations
                 new Line("...",
                     new Line("Next time, perhaps you could give me some more personal advice?",
                         new Branch("I would appreciate it.",
-                            new PossibleReply("Of course, Daina.", new Line("Yay!", endChat)),
+                            new PossibleReply("Of course, {name}.", new Line("Yay!", endChat)),
                             new PossibleReply("I'd rather not.", new Line("I understand.", endChat))))));
 
-            var afterPick = new Branch("You know, you're pretty good at giving advice.",
+            var afterPick = new Branch("You know, {you}, you're pretty good at giving advice.",
                 new PossibleReply("Of course!",
                     afterPick2),
                 new PossibleReply("What?!",
@@ -95,7 +95,7 @@ namespace Core.Conversations
                             new Line("...Would you be willing to start over again?"))))))
 
                         }))));
-            return new Branch("Hello! I’m Daina ^^. Could we talk for a while?",
+            return new Branch("Hello! I’m {name} ^^. Could we talk for a while?",
                 new PossibleReply("Yes!", begin),
                 new PossibleReply("Give me a minute.",
                     new Line("Alright. Let's talk in 60 seconds again, okay? :)", new ActionNode((os, fr) =>

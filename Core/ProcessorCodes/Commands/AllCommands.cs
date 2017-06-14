@@ -11,6 +11,16 @@ namespace Core.ProcessorCodes.Commands
     {
         public static List<Command> All = new List<Command>()
         {
+            new Command("start", "Initiates the first conversation.", async (f,m,o)=>
+            {
+                await o.Speaking.SendMessage(f,
+                    "Hello! Let's talk. Type '/help' for a list of commands or '/tips' to get see some phrases that I respond to well.");
+            }),
+            new Command("tips", "Says some random sentence that the friend responds to.", async(f,m,o)=>
+            {
+                await o.Speaking.SendMessage(f,
+                    "Type '/books' to start a conversation about books or '/alice' to start a freeform conversation with an AIML subsystem.");
+            }),
             new Command("alice", "Enters Alice mode.", async (f,m,o)=>
             {
                 if (!f.Memory.TalkingToAlice)
@@ -72,7 +82,7 @@ namespace Core.ProcessorCodes.Commands
             }),
             new Command("help", "Prints all commands.", async (f,s,o)=>
             {
-                string all = string.Join("\n", All.Select(cmd => cmd.Keyword + " - " + cmd.Description));
+                string all = string.Join("\n", All.OrderBy(cmd => cmd.Keyword).Select(cmd => cmd.Keyword + " - " + cmd.Description));
                 await o.Speaking.SendSystemMessage(f, all);
             }),
             new Command("guid", "Prints the GUID of this friend.", async (f,s,o)=>

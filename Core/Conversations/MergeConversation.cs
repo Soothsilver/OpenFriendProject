@@ -19,7 +19,7 @@ namespace Core.Conversations
                         f.AddTemporaryProcessor(new MergeGuidProcessorCode(o));
                     }));
             return
-                new Line("Hello there, friend!",
+                new Line("Hello there, {you}!",
                     new Branch("Is this the first time you're talking to me?",
                         new PossibleReply("Yes",
                             new Branch("Then I'm happy to meet you! Would you like to talk about books?",
