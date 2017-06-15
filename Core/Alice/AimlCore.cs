@@ -16,13 +16,7 @@ namespace Core.Aiml
             _overseer = overseer;
         }
         
-
-        public void Initialize()
-        {
-           
-            Console.WriteLine("Loading.");
-            Console.WriteLine("Loaded.");
-        }
+        
 
         public Alice.Alice CreateAliceFor(Friend friend)
         {

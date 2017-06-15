@@ -105,11 +105,11 @@ namespace Core.Endpoints
                 case NonMessageAction.MarkSeen: senderAction = "mark_seen"; break;
                 case NonMessageAction.TypingOff:
                     senderAction = "typing_off";
-                    friend.Speaking.EndTyping();
+                    friend.Speaking.EndTypingToHome();
                     break;
                 case NonMessageAction.TypingOn:
                     senderAction = "typing_on";
-                    friend.Speaking.BeginTyping();
+                    friend.Speaking.BeginTypingToHome();
                     break;
             }
             if (friend.IsFacebook)

@@ -23,14 +23,14 @@ namespace Core.Endpoints
 
         public Task SendImageUrl(Friend friend, string url)
         {
-            friend.Speaking.Say(url);
+            friend.Speaking.SayToHome(url);
             return Task.FromResult(0);
         }
 
         public Task SendMessage(Friend friend, string message, QuickReply[] quickReplies)
         {
-            friend.Speaking.Say(message);
-            friend.Speaking.SetQuickReplies(quickReplies);
+            friend.Speaking.SayToHome(message);
+            friend.Speaking.SetQuickRepliesToHome(quickReplies);
             return Task.FromResult(0);
         }
 
@@ -39,10 +39,10 @@ namespace Core.Endpoints
             switch (action)
             {
                 case NonMessageAction.TypingOff:
-                    friend.Speaking.EndTyping();
+                    friend.Speaking.EndTypingToHome();
                     break;
                 case NonMessageAction.TypingOn:
-                    friend.Speaking.BeginTyping();
+                    friend.Speaking.BeginTypingToHome();
                     break;
             }
             return Task.FromResult(0);
@@ -50,7 +50,7 @@ namespace Core.Endpoints
 
         public Task SendFile(Friend friend, string filename)
         {
-            friend.Speaking.SendFilename(filename);
+            friend.Speaking.SendFilenameToHome(filename);
             return Task.FromResult(0);
         }
     }

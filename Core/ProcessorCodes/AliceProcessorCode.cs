@@ -10,7 +10,7 @@ namespace Core.ProcessorCodes
     class AliceProcessorCode : ProcessorCode
     {
         public AliceProcessorCode(Overseer overseer) : base(overseer)
-        {
+        { 
         }
 
         public override async Task<bool> ProcessMessage(Friend friend, string message)

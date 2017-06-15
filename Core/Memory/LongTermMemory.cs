@@ -11,16 +11,19 @@ namespace Core
     {
         public string InternalId;
         public string CommonName = "Daina";
-        public string CaretakerName = "friend";
+        public string CaretakerName;
         public string FacebookId;
         public SerializableDictionary Variables;
         public int TelegramId;
         public string Country = null;
         public int CaretakersClockHasPlusThisManyHours;
+        public bool HasRealisticTypingSpeed;
 
         public LongTermMemory()
         {
             this.InternalId = Guid.NewGuid().ToString();
+            this.CaretakerName = "Caretaker #" + R.Next(10).ToString() + R.Next(10).ToString() + R.Next(10).ToString();
+            this.HasRealisticTypingSpeed = true;
             this.Variables = new SerializableDictionary();
         }
 

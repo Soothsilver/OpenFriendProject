@@ -96,6 +96,7 @@
     <Compile Include="Endpoints\Telegram\TelegramEndpoint.cs" />
     <Compile Include="Endpoints\Telegram\TelegramUpdates.cs" />
     <Compile Include="Freeform\FreeformPhrases.cs" />
+    <Compile Include="Freeform\Joke.cs" />
     <Compile Include="Memory\SerializableDictionary.cs" />
     <Compile Include="NonMessageAction.cs" />
     <Compile Include="ProcessorCodes\AsunaProcessorCode.cs" />
@@ -121,8 +122,6 @@
     <Compile Include="ProcessorCodes\ConversationProcessorCode.cs" />
     <Compile Include="ProcessorCodes\DefaultProcessorCode.cs" />
     <Compile Include="Friends\Friend.cs" />
-    <Compile Include="ProcessorCodes\GoodbyeProcessorCode.cs" />
-    <Compile Include="ProcessorCodes\HelloProcessorCode.cs" />
     <Compile Include="Memory\Memory.cs" />
     <Compile Include="MessageProcessor.cs" />
     <Compile Include="Endpoints\Facebook\FacebookMetaCommunicator.cs" />
@@ -149,9 +148,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Conversations\destroy.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Conversations\set-locale.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Data\jokes.txt" />
+    <Content Include="Data\oneliners.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="Freeform\Riddle.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -13,7 +13,7 @@ namespace Core
 
         public Memory Memory;
 
-        private Overseer overseer;
+        public Overseer Overseer { get; }
 
         private ThreadQueue queue = new ThreadQueue();
 
@@ -26,7 +26,7 @@ namespace Core
             Memory = new Memory(this);
             Speaking = new FriendMouth(this);
             MacroReplacer = new MacroReplacer(this);
-            this.overseer = overseer;
+            this.Overseer = overseer;
         }
 
         public Friend(LongTermMemory memory, Overseer overseer)
@@ -35,7 +35,9 @@ namespace Core
             Memory.Persistent = memory;
         }
 
-        public bool HasRealisticTypingSpeed => false;
+        public LongTermMemory Data => Memory.Persistent;
+
+        public bool HasRealisticTypingSpeed => Data.HasRealisticTypingSpeed;
 
         public bool IsFacebook => Memory.Persistent.FacebookId != null;
         public bool IsTelegram => Memory.Persistent.TelegramId != 0;
@@ -44,9 +46,9 @@ namespace Core
         {
             get
             {
-                if (IsFacebook) yield return overseer.Facebook;
-                if (IsTelegram) yield return overseer.Telegram;
-                yield return overseer.Home;
+                if (IsFacebook) yield return Overseer.Facebook;
+                if (IsTelegram) yield return Overseer.Telegram;
+                yield return Overseer.Home;
             }
         }
 
@@ -61,7 +63,7 @@ namespace Core
 
         public void StartProcessingInput(string message)
         {
-            queue.EnqueueAction(() => { overseer.MessageProcessor.ProcessIncomingMessage(this, message).Wait(); });
+            queue.EnqueueAction(() => { Overseer.MessageProcessor.ProcessIncomingMessage(this, message).Wait(); });
         }
 
         public void SavePersistentMemory()

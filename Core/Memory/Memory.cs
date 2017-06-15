@@ -34,10 +34,21 @@ namespace Core
             }
             else
             {
+                /*
                 await overseer.Speaking.SendMessage(this.Friend,
                     "I have no further topics. Say 'hi' when you want to talk again.",
                     new[] {  new Conversation.QuickReply("Hello, {name}!") });
+                */
             }
+        }
+
+        public Task PushConversation(ConversationNode node, Overseer overseer)
+        {
+            if (CurrentConversation != null)
+            {
+                ConversationStack.Push(CurrentConversation);
+            }
+            return MoveConversationTo(node, overseer);
         }
     }
 }

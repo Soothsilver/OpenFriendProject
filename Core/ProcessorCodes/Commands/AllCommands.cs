@@ -141,11 +141,40 @@ namespace Core.ProcessorCodes.Commands
             {
                 await o.Speaking.SendMessage(f, "Hello! My name is " + f.Memory.Persistent.CommonName + ".");
                 await o.Speaking.SendMessage(f, "My ID is " + f.Memory.Persistent.InternalId + ".");
-                await o.Speaking.SendMessage(f, "My caretaker is my " + f.Memory.Persistent.CaretakerName + ".");
+                await o.Speaking.SendMessage(f, "My caretaker is " + f.Memory.Persistent.CaretakerName + ".");
                 await o.Speaking.SendMessage(f, "I live in " + f.Memory.Persistent.Country + ".");
                 await o.Speaking.SendMessage(f,
                     "My time offset from Open Friend Project servers is " +
                     f.Memory.Persistent.CaretakersClockHasPlusThisManyHours + " hours.");
+            }),
+            new Command("fast", "Toggles whether the friend types realistically slowly.", async (f, s, o) =>
+            {
+                f.Data.HasRealisticTypingSpeed = !f.Data.HasRealisticTypingSpeed;
+                f.SavePersistentMemory();
+                if (f.Data.HasRealisticTypingSpeed)
+                {
+                    await f.Speaking.Say("I will now be speaking more slowly, as a skilled human would.");
+                }
+                else
+                {
+                    await f.Speaking.Say("I will now be typing super fast, as would be expected from a computer program.");
+                }
+            }),
+            new Command("resume", "Resumes our last conversation.", async(f,s,o)=>
+            {
+                if (f.Memory.CurrentConversation != null)
+                {
+                    await f.Memory.CurrentConversation.Enter(o, f);
+                }
+                else
+                {
+                    await f.Speaking.Say("We weren't talking about anything.");
+                    await f.Speaking.Say("What would you like to talk about?");
+                }
+            }),
+            new Command("destroy", "Erases all memories of this friend.", async(f,s,o)=>
+            {
+                await f.Memory.MoveConversationTo(o.LoadedConversations.All["destroy"], o);
             })
         };
     }

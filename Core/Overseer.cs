@@ -40,16 +40,13 @@ namespace Core
             this.DialogueLoader = new DialogueLoader();
             this.FreeformPhrases = new Freeform.FreeformPhrases(this);
             this.LoadedConversations = new LoadedConversations(this);
+            Riddle.Load();
+            Joke.Load();
 
             FacebookMetaCommunicator mc = new FacebookMetaCommunicator(this);
             mc.StartLoop();
             TelegramCommunicator tg = new TelegramCommunicator(this);
             tg.StartLoop();
-        }
-
-        public void Initialize()
-        {
-            this.Aiml.Initialize();
         }
     }
 }

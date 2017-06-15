@@ -31,5 +31,10 @@ namespace Core
                 yield return list[ind];
             }
         }
+
+        public static int Next(int max)
+        {
+            return rgen.Next(max);
+        }
     }
 }

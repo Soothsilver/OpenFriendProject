@@ -46,6 +46,15 @@ namespace Core.Conversation.Nodes
                     await overseer.Speaking.SendSystemMessage(friend,
                         friend.Memory.Persistent.CommonName + " now lives in " + friend.Memory.Persistent.Country + ".");
                     break;
+                case "ExportMemory":
+                    await overseer.Speaking.SendFile(friend, MemoryStorage.GetFilename(friend));
+                    break;
+                case "DeleteThisFriend":
+                    string file = MemoryStorage.GetFilename(friend);
+                    System.IO.File.Delete(file);
+                    friend.Memory.Persistent = new LongTermMemory();
+                    friend.Memory.ConversationStack.Clear();
+                    break;
                 default:
                     await overseer.Speaking.SendSystemMessage(friend, "Unknown function '" + specialName + "' called.");
                     break;

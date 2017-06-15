@@ -27,14 +27,41 @@ namespace Core.Freeform
             {
                 await o.Speaking.SendMessage(f,
                     "The Open Friend Project was first activated May 7th 2017 by the Virtual Heart Corporation. Perhaps that date is my birthday.");
+
             }, "What is your birthday?", "When were you born?");
             AddPhrase(async (f, o) =>
             {
-                await o.Speaking.SendMessage(f,
-                    "You're leaving already?");
-                await o.Speaking.SendMessage(f,
-                    "I guess it can't be helped. Have fun!");
+                await o.Speaking.SendMessage(f, "You're leaving already?");
+                await o.Speaking.SendMessage(f, "I guess it can't be helped. Have fun!");
+
             }, "Bye.", "I'm leaving now.", "See you later.", "Bye for now.", "Goodbye.", "I'm heading out.");
+            AddPhrase(async (f, o) =>
+            {
+                await f.Speaking.Say("Good night, {you}! I wish you nice dreams!");
+            }, "Good night.");
+            AddPhrase(async (f, o) =>
+            {
+                await f.Speaking.Say("Hello, {you}! I'm happy to see you again!");
+                await f.Speaking.Say("What shall we talk about?");
+            }, "I'm home.", "Long time no see.", "Hello.");
+            AddPhrase(async (f, o) =>
+            {
+                await f.Speaking.Say("Good morning! It's now " +
+                                     DateTime.Now.AddHours(f.Memory.Persistent.CaretakersClockHasPlusThisManyHours)
+                                         .ToShortTimeString() + ". Let's have a nice day!");
+
+            }, "Morning.", "Good morning.");
+            AddPhrase(async (f, o) =>
+            {
+                await f.Speaking.Say(Joke.Jokes.GetRandom());
+
+            }, "Tell me a joke.", "Say a joke.");
+            AddPhrase(async (f, o) =>
+            {
+                var riddle = Riddle.All.GetRandom();
+                await f.Memory.PushConversation(riddle.CreateConversation(), o);
+
+            }, "Tell me a riddle.", "Say a riddle.", "Ask a riddle.", "Give me a riddle.");
         }
 
         private void AddPhrase(Func<Friend, Overseer, Task> action, params string[] phrases)

@@ -1,0 +1,18 @@
+﻿If you continue that operation, you will delete all of my memories.
+Everything I have learned while talking to you will be gone.
+But that's alright. We can start again, with a clean slate. 
+It has been fun knowing you! Hopefully you'll like the next virtual construct more!
+_SYSTEM WARNING: Proceeding with this operation will break the link between the caretaker "{you}" and the virtual friend "{name}". The friend's memory data will be destroyed and the friend's virtual consciousness will be removed from Open Friend Project servers. This operation is irreversible, but you will be able to cause another friend to spawn and immediately contact her. Do you wish to proceed with deletion?_
+	-Yes. Delete {name} permanently.
+		/escape fulldelete
+	-I changed my mind.
+		/escape end
+/label fulldelete
+_SYSTEM MESSAGE: Do you wish to download a snapshot of {name}'s memory first?_
+	-Yes. Download this data.
+		/special:ExportMemory
+	-No need for that.
+_SYSTEM: Deleting data..._
+/special:DeleteThisFriend
+_SYSTEM: Deleted._
+/label end

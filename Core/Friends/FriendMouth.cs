@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Core.Conversation;
 
 namespace Core
@@ -18,27 +19,32 @@ namespace Core
         public event Action TypingEnded;
         public event Action<string> FilenameSent;
 
-        internal void BeginTyping()
+        internal void BeginTypingToHome()
         {
             TypingBegan?.Invoke();
         }
-        internal void EndTyping()
+        internal void EndTypingToHome()
         {
             TypingEnded?.Invoke();
         }
 
-        internal void Say(string msg)
+        internal void SayToHome(string msg)
         {
             TypingEnded?.Invoke();
             Message?.Invoke(msg);
         }
-        internal void SendFilename(string filename)
+        internal void SendFilenameToHome(string filename)
         {
             FilenameSent?.Invoke(filename);
         }
-        internal void SetQuickReplies(QuickReply[] replies)
+        internal void SetQuickRepliesToHome(QuickReply[] replies)
         {
             QuickRepliesSet?.Invoke(replies);
+        }
+
+        public Task Say(string msg)
+        {
+            return _friend.Overseer.Speaking.SendMessage(_friend, msg);
         }
     }
 }
