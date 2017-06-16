@@ -34,7 +34,7 @@ namespace Core.Freeform
                 await o.Speaking.SendMessage(f, "You're leaving already?");
                 await o.Speaking.SendMessage(f, "I guess it can't be helped. Have fun!");
 
-            }, "Bye.", "I'm leaving now.", "See you later.", "Bye for now.", "Goodbye.", "I'm heading out.");
+            }, "Bye.", "Take care.", "I'm leaving now.", "See you later.", "Bye for now.", "Goodbye.", "I'm heading out.");
             AddPhrase(async (f, o) =>
             {
                 await f.Speaking.Say("Good night, {you}! I wish you nice dreams!");
@@ -62,6 +62,30 @@ namespace Core.Freeform
                 await f.Memory.PushConversation(riddle.CreateConversation(), o);
 
             }, "Tell me a riddle.", "Say a riddle.", "Ask a riddle.", "Give me a riddle.");
+            AddPhrase(async (f, o) =>
+            {
+                await f.Speaking.Say("You are {you}, my best friend!");
+            }, "Say my name.", "Who am I?");
+            AddPhrase(async (f, o) =>
+            {
+                await f.Speaking.Say(
+                    "I am {name}, a virtual person constructed by the Open Friend Project and maintained by {you}.");
+            }, "Say your name.", "Who are you?", "What's your name?");
+            AddPhrase(async (f, o) =>
+            {
+                await f.Speaking.Say(
+                    "I am in {country}, with you!");
+            }, "Where are you?");
+            AddPhrase(async (f, o) =>
+            {
+                await f.Speaking.Say(
+                    "I am in {country}, with you!");
+            }, "Where are you?");
+            AddPhrase(async (f, o) =>
+            {
+                await f.Speaking.Say(
+                    "I am doing very well, thank you for asking! I hope you're doing well yourself, too!");
+            }, "How are you?", "How are you today?");
         }
 
         private void AddPhrase(Func<Friend, Overseer, Task> action, params string[] phrases)

@@ -68,7 +68,7 @@ namespace Core
             Riddle.create("What is so delicate that even mentioning it breaks it?", "Silence",
                 "silence");
             Riddle.create("What goes up, lets out a load, then goes back down?",
-                "An elevator! (Or penis)", "elevator");
+                "An elevator!", "elevator");
             Riddle.create("What has ten letters and starts with gas?", "An automobile",
                 "automobile");
             Riddle.create(

@@ -13,67 +13,53 @@ Add first campaign
 
 
 From "Wake me up Asuna":
-
-
-What time is it?
-What's the time?
-
-What's the date today?
-What day is it today?
-
-What's the weather like today?
-
-What's the weather like tomorrow?
-
-Tell me a joke.
-Say a joke.
-
-Give me a riddle.
-Say a riddle.
-Ask a riddle.
-
-When is your birthday?
-When were you born?
-
-Let's play!
-Thank you.
-What are you doing now?
-Sing something.
-Talk to me.
-Cheer me up.
-Cool.
-How are you?
-Do your best.
-What's your name?
-You're beautiful.
-Take care.
-Let's play a game.
-Be by my side forever.
-I'm lonely.
-I'm tried.
-Where are you?
-Say my name.
-Were you sleeping?
-I want to sleep but I can't.
-I have nothing to do.
-I'm sad.
-When's my birthday?
-Look after me today.
-Do you like me?
-
-Morning.
-Good morning.
-
-I'm home.
-Hello.
-Long time no see.
-
-Good night.
-
-
-Bye.
-I'm leaving now.
-See you later.
-Bye for now.
-Goodbye.
-I'm heading out.
+DE¼AYED: Let's play!
+DE¼AYED: Thank you.
+DE¼AYED: What are you doing now?
+DE¼AYED: Sing something.
+DE¼AYED: Talk to me.
+DE¼AYED: Cheer me up.
+DE¼AYED: You're beautiful.
+DE¼AYED: Do your best.
+DE¼AYED: Let's play a game.
+DE¼AYED: Be by my side forever.
+DE¼AYED: I'm lonely.
+DE¼AYED: I'm tried.
+DE¼AYED: Were you sleeping?
+DE¼AYED: I want to sleep but I can't.
+DE¼AYED: I have nothing to do.
+DE¼AYED: I'm sad.
+DE¼AYED: When's my birthday?
+DE¼AYED: Look after me today.
+DE¼AYED: Do you like me?
+WONTDO: Cool.
+DONE: How are you?
+DONE: What's your name?
+DONE: Take care.
+DONE: Where are you?
+DONE: Say my name.
+DONE: What time is it?
+DONE: What's the time?
+DONE: What's the date today?
+DONE: What day is it today?
+WONTDO: What's the weather like today?
+WONTDO: What's the weather like tomorrow?
+DONE: Tell me a joke.
+DONE: Say a joke.
+DONE: Give me a riddle.
+DONE: Say a riddle.
+DONE: Ask a riddle.
+DONE: When is your birthday?
+DONE: When were you born?
+DONE: Morning.
+DONE: Good morning.
+DONE: I'm home.
+DONE: Hello.
+DONE: Long time no see.
+DONE: Good night.
+DONE: Bye.
+DONE: I'm leaving now.
+DONE: See you later.
+DONE: Bye for now.
+DONE: Goodbye.
+DONE: I'm heading out.
