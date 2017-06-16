@@ -86,6 +86,11 @@ namespace Core.Freeform
                 await f.Speaking.Say(
                     "I am doing very well, thank you for asking! I hope you're doing well yourself, too!");
             }, "How are you?", "How are you today?");
+            AddPhrase(async (f, o) =>
+            {
+                await f.Memory.PushConversation(o.LoadedConversations.All["beautiful"], o);
+
+            }, "You are beautiful.", "You look lovely.");
         }
 
         private void AddPhrase(Func<Friend, Overseer, Task> action, params string[] phrases)

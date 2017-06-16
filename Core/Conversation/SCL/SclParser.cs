@@ -50,7 +50,7 @@ namespace Core.Conversation
             SclMenu menu = new Conversation.SclMenu(lines[currentLine].PureText);
             currentLine++;
             indentCount = lines[currentLine].IndentCount;
-            while (lines[currentLine].IndentCount >= indentCount)
+            while (currentLine < lines.Count && lines[currentLine].IndentCount >= indentCount)
             {
                 var line = lines[currentLine];
                 if (line.IndentCount == indentCount && line.Kind == SclLineKind.MenuOption)

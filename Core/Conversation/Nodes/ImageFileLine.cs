@@ -2,18 +2,19 @@
 
 namespace Core.Conversations
 {
-    internal class ImageFileLine : ConversationNode
+    internal class ImageLine : ConversationNode
     {
-        private readonly string _filepath;
+        private readonly string _url;
 
-        public ImageFileLine(string path)
+        public ImageLine(string url, ConversationNode next)
         {
-            this._filepath = path;
+            _url = url;
+            FollowingNode = next;
         }
 
         public override async Task Enter(Overseer overseer, Friend friend)
         {
-            await overseer.Speaking.SendImageFile(friend, _filepath);
+            await overseer.Speaking.SendImage(friend, _url);
             await friend.Memory.MoveConversationTo(FollowingNode, overseer);
         }
     }

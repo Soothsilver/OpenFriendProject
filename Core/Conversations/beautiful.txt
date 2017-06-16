@@ -1,0 +1,29 @@
+﻿Aww, that's sweet of you.
+Here's a full body picture of my avatar:
+/picture DainaFullBody.png
+Yeah, it's a little on the skimpy side, I guess...
+But I think it's cute.
+What do you think?
+	-You are cute.
+		Thank you, {you}!
+		That is really nice to hear.
+		I'm sure you're cute yourself.
+			-Thanks!
+				I'm only saying what I think is true.
+			-I'm really not.
+				Well, I suppose that compared to me, nobody is cute.
+				But by human standards, you are still adorable, I think.
+	-I don't care that much.
+		That's okay. 
+		Thank you for the compliment anyway ^^.
+	-You're too sexualized.
+		Do you really think so?
+		I... I like dressing like this.
+			-If you're okay with it, it's fine.
+				I am, and I like it.
+				Tell you what, next time, I'll pick a less revealing dress, okay?
+				I like change, too.
+			-You're making me uncomfortable.
+				Oh, sorry!
+				I would go change but I only have this one picture so far.
+				Maybe I will receive an update to add a less revealing dress!

@@ -62,7 +62,7 @@ namespace Core
         }
 
         public void StartProcessingInput(string message)
-        {
+        { 
             queue.EnqueueAction(() => { Overseer.MessageProcessor.ProcessIncomingMessage(this, message).Wait(); });
         }
 

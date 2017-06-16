@@ -97,6 +97,20 @@ namespace Core.Endpoints.Telegram
             }
         }
 
+        public async Task SendImageFile(Friend friend, string filepath)
+        {
+            string url = TelegramCommunicator.GetUrlFromQuery("sendPhoto", null);
+            using (var form = new MultipartFormDataContent())
+            {
+                form.Add(new StringContent(friend.Memory.Persistent.TelegramId.ToString(), Encoding.UTF8), "chat_id");
+                using (FileStream fileStream = new FileStream(filepath, FileMode.Open, FileAccess.Read))
+                {
+                    form.Add(new StreamContent(fileStream), "photo", System.IO.Path.GetFileName(filepath));
+                    await client.PostAsync(url, form);
+                }
+            }
+        }
+
         private async Task PostJsonMessage(string method, object contents)
         {
             var json = JsonConvert.SerializeObject(contents, Auxiliary.JsonSerializerSettings);

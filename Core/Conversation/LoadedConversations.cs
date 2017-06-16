@@ -14,8 +14,13 @@ namespace Core.Conversation
         public LoadedConversations(Overseer overseer)
         {
             _overseer = overseer;
-            All.Add("set-locale", _overseer.DialogueLoader.LoadFromFile("Conversations/set-locale.txt"));
-            All.Add("destroy", _overseer.DialogueLoader.LoadFromFile("Conversations/destroy.txt"));
+            foreach(var filename in System.IO.Directory.EnumerateFiles("Conversations", "*.txt"))
+            {
+                All.Add(System.IO.Path.GetFileNameWithoutExtension(filename),
+                    _overseer.DialogueLoader.LoadFromFile(filename));
+            }
+            //All.Add("set-locale", _overseer.DialogueLoader.LoadFromFile("Conversations/set-locale.txt"));
+            //All.Add("destroy", _overseer.DialogueLoader.LoadFromFile("Conversations/destroy.txt"));
         }
         
     }

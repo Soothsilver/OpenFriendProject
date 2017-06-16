@@ -68,5 +68,10 @@ namespace Core
         {
             await friend.Endpoints.ForEachAsync((ep) => ep.SendFile(friend, filename));
         }
+
+        public async Task SendImageFile(Friend friend, string filepath)
+        {
+            await friend.Endpoints.ForEachAsync((ep) => ep.SendImageFile(friend, filepath));
+        }
     }
 }

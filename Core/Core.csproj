@@ -80,6 +80,7 @@
     <Compile Include="Conversation\LoadedConversations.cs" />
     <Compile Include="Conversation\MacroReplacer.cs" />
     <Compile Include="Conversation\Nodes\DelayedMovenode.cs" />
+    <Compile Include="Conversation\Nodes\ImageFileLine.cs" />
     <Compile Include="Conversation\Nodes\SpecialActionNode.cs" />
     <Compile Include="Conversation\Nodes\DoNothingNode.cs" />
     <Compile Include="Conversation\Nodes\SetVariableNode.cs" />
@@ -148,10 +149,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Conversations\beautiful.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Conversations\destroy.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Conversations\set-locale.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\DainaFullBody.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\jokes.txt" />

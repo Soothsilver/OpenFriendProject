@@ -13,5 +13,6 @@ namespace Core.Endpoints
         Task SendMessage(Friend friend, string message, QuickReply[] quickReplies);
         Task SenderAction(Friend friend, NonMessageAction action);
         Task SendFile(Friend friend, string filename);
+        Task SendImageFile(Friend friend, string filepath);
     }
 }

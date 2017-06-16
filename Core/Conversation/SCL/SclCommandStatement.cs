@@ -1,6 +1,7 @@
 ﻿using System;
 using Core.Conversation.Nodes;
 using Core.Conversation.SCL;
+using Core.Conversations;
 
 namespace Core.Conversation
 {
@@ -36,6 +37,8 @@ namespace Core.Conversation
                     DoNothingNode n = new DoNothingNode();
                     conversation.AddLabeledNode(this.Arguments[0], n);
                     return n;
+                case "/picture":
+                    return new ImageFileLine("Data/" + this.Arguments[0]);
                 case "/input":
                     return new Nodes.SetVariableNode(this.Arguments[0]);
                 default:

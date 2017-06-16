@@ -53,5 +53,11 @@ namespace Core.Endpoints
             friend.Speaking.SendFilenameToHome(filename);
             return Task.FromResult(0);
         }
+
+        public Task SendImageFile(Friend friend, string filepath)
+        {
+            friend.Speaking.SendFilenameToHome(filepath);
+            return Task.FromResult(0);
+        }
     }
 }

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Conversation;
+using Core.Endpoints.Telegram;
 using Newtonsoft.Json;
 
 namespace Core.Endpoints
@@ -129,6 +131,25 @@ namespace Core.Endpoints
         public Task SendFile(Friend friend, string filename)
         {
             return SendMessage(friend, "FILE CONTENTS:" + Environment.NewLine + System.IO.File.ReadAllText(filename), null);
+        }
+
+        public Task SendImageFile(Friend friend, string filepath)
+        {
+            return SendMessage(friend, "IMAGE UPLOAD NOT SUPPORTED ON FACEBOOK.", null);
+            /*
+            string url = "https://graph.facebook.com/v2.6/me/messages?access_token=" + PageAccessToken;
+            using (var form = new MultipartFormDataContent())
+            {
+                form.Add(new StringContent("{\"id\":\"" + friend.Data.FacebookId + "\"}", Encoding.UTF8),
+                    "recipient");
+                form.Add(new StringContent(@"{""attachment"" : { ""type"":""image"", ""payload"":{}}}", Encoding.UTF8),
+                    "message");
+                using (FileStream fileStream = new FileStream(filepath, FileMode.Open, FileAccess.Read))
+                {
+                    form.Add(new StreamContent(fileStream), "filedata", System.IO.Path.GetFileName(filepath));
+                    await client.PostAsync(url, form);
+                }
+            }*/
         }
 
         private async Task PostJsonMessage(object contents)
