@@ -15,23 +15,12 @@ namespace Core
         public Senses(Overseer overseer)
         {
             this.overseer = overseer;
-        }
-
-  
-        private void StartProcessingMessage(Friend friend, string message)
-        {
-            overseer.Speaking.Debug("Incoming message: " + message);
-            friend.StartProcessingInput(message);
-        }
-
-
-
-    
-
+        }     
 
         public void IncomingTextMessage(Friend friend, string text)
         {
-            StartProcessingMessage(friend, text.Replace("\\n", Environment.NewLine));
+            overseer.Speaking.Debug("Incoming message: " + text.Replace("\\n", Environment.NewLine));
+            friend.StartProcessingInput(text.Replace("\\n", Environment.NewLine));
         }
     }
 }

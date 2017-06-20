@@ -73,6 +73,7 @@
     <Compile Include="Alice\AimlCore.cs" />
     <Compile Include="Alice\Alice.cs" />
     <Compile Include="Auxiliary\Auxiliary.cs" />
+    <Compile Include="Auxiliary\Logging.cs" />
     <Compile Include="Auxiliary\R.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Conversations\MergeConversation.cs" />
@@ -155,6 +156,9 @@
     <Content Include="Conversations\destroy.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Conversations\story-1.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Conversations\set-locale.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -166,6 +170,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Compile Include="Freeform\Riddle.cs" />
+    <Content Include="Data\OpenFriendProjectLogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\VirtualHeartCorporation.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

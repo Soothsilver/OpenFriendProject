@@ -1,0 +1,15 @@
+﻿SYS Welcome, {you}, to the Virtual Heart Corporation communication system.
+/picture VirtualHeartCorporation.png
+SYS Your licenses are:\n- 1 lifetime subscription to a 1 virtual friend\n\nAccess Open Friend Project servers?
+	-Yes, access.
+		/escape yes
+	-Disconnect.
+		SYS You have been disconnected. Type /start to reconnect at any time.
+/end
+/label yes
+TODO 
+I should continue here.
+He hehe.
+/picture OpenFriendProjectLogo.png
+Well, that was the logo.
+Bye.

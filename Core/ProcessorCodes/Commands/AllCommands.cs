@@ -175,6 +175,29 @@ namespace Core.ProcessorCodes.Commands
             new Command("destroy", "Erases all memories of this friend.", async(f,s,o)=>
             {
                 await f.Memory.MoveConversationTo(o.LoadedConversations.All["destroy"], o);
+            }),
+            new Command("crash", "Crashes Open Friend Project.", (f, s, o) =>
+            {
+                throw new Exception("The /crash command was used.");
+            }),
+            new Command("load", "Loads a specified conversation.", async(f,m,o)=>
+            {
+                if (m.Length > "/load ".Length)
+                {
+                    string name = m.Substring("/load ".Length);
+                    if (o.LoadedConversations.All.ContainsKey(name))
+                    {
+                        await f.Memory.MoveConversationTo(o.LoadedConversations.All[name], o);
+                    }
+                    else
+                    {
+                        await o.Speaking.SendSystemMessage(f, "The conversation '" + name + "' does not exist.");
+                    }
+                }
+                else
+                {
+                    await o.Speaking.SendSystemMessage(f, "Type '/load [conversation]' to load a conversation.\nExisting conversations:\n\n" + String.Join("\n", o.LoadedConversations.All.Keys));
+                }
             })
         };
     }

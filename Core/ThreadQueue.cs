@@ -39,9 +39,10 @@ namespace Core
                                 top();
 #if !DEBUG
                             }
-                            catch
+                            catch (Exception exception)
                             {
-                                 // Suppress all in release mode.
+                                // Suppress all in release mode.
+                                Core.Logging.Log(exception.ToString() + "\r\nStack trace: " + exception.StackTrace + "\r\n\r\n--------\r\n\r\n");
                             }
                             finally
                             {

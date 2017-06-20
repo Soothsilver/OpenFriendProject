@@ -27,6 +27,8 @@ namespace Core.Conversation
                     {
                         return conversation.GetNodeFromLabel(this.Arguments[0]);
                     });
+                case "/end":
+                    return new DelayedMoveNode((f) => null);
                 case "/escape":
                     return new DelayedMoveNode((friend) =>
                     {
