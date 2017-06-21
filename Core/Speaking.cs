@@ -59,9 +59,9 @@ namespace Core
 
 
 
-        public Task SendSystemMessage(Friend friend, string message)
+        public Task SendSystemMessage(Friend friend, string message, QuickReply[] quickReplies = null)
         {
-            return SendMessage(friend, "_SYSTEM MESSAGE:" + Environment.NewLine + message + "_", honorRealisticTypingSpeed: false);
+            return SendMessage(friend, "_" + message + "_", quickReplies, honorRealisticTypingSpeed: false);
         }
 
         public async Task SendFile(Friend friend, string filename)

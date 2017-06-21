@@ -1,0 +1,5 @@
+﻿To communicate with your friend, choose your response from those offered.
+
+You may also use commands to control the system. Type '/help' to view a list of commands.
+
+You may also initiate some conversation using freeform text input. To see some possible sentences that your friend will understand, type '/tips'.

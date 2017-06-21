@@ -41,6 +41,8 @@ namespace Core.Conversation
                     return n;
                 case "/picture":
                     return new ImageFileLine("Data/" + this.Arguments[0]);
+                case "/file":
+                    return new DocumentFileLine("Data/" + this.Arguments[0]);
                 case "/input":
                     return new Nodes.SetVariableNode(this.Arguments[0]);
                 default:

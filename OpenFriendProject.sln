@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenFriendProjectConsoleResponder", "OpenFriendProjectConsoleResponder\OpenFriendProjectConsoleResponder.csproj", "{5680318D-5A89-42F5-8C87-5ABCA6B01533}"
 EndProject
@@ -10,8 +10,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinformsClientAndServer", "WinformsFriend\WinformsClientAndServer.csproj", "{7B217F70-94DC-42FA-A6DD-6CF24D6DAC54}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deprecated", "Deprecated", "{066BC4A3-2158-48A5-896E-1C5F36818F7D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AliceSubsystem", "AliceSubsystem\AliceSubsystem.csproj", "{DF1E9E2B-EAE2-440C-8116-858F79D3A14C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E67B727C-A133-446A-8D73-AB3B7487F690}"
 	ProjectSection(SolutionItems) = preProject
@@ -37,10 +35,6 @@ Global
 		{7B217F70-94DC-42FA-A6DD-6CF24D6DAC54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B217F70-94DC-42FA-A6DD-6CF24D6DAC54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B217F70-94DC-42FA-A6DD-6CF24D6DAC54}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DF1E9E2B-EAE2-440C-8116-858F79D3A14C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF1E9E2B-EAE2-440C-8116-858F79D3A14C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF1E9E2B-EAE2-440C-8116-858F79D3A14C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF1E9E2B-EAE2-440C-8116-858F79D3A14C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

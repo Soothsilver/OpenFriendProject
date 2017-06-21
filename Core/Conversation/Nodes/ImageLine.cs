@@ -17,4 +17,19 @@ namespace Core.Conversations
             await friend.Memory.MoveConversationTo(FollowingNode, overseer);
         }
     }
+    internal class DocumentFileLine : ConversationNode
+    {
+        private readonly string _filepath;
+
+        public DocumentFileLine(string path)
+        {
+            this._filepath = path;
+        }
+
+        public override async Task Enter(Overseer overseer, Friend friend)
+        {
+            await overseer.Speaking.SendFile(friend, _filepath);
+            await friend.Memory.MoveConversationTo(FollowingNode, overseer);
+        }
+    }
 }

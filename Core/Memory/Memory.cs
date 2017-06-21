@@ -10,8 +10,7 @@ namespace Core
     {
         public LongTermMemory Persistent;
         public Friend Friend { get; }
-
-        public Alice.Alice Alice;
+        
         public Memory(Friend friend)
         {
             this.Friend = friend;

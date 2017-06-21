@@ -14,8 +14,14 @@ namespace Core.ProcessorCodes.Commands
         {
             new Command("start", "Initiates the first conversation.", async (f,m,o)=>
             {
-                await o.Speaking.SendMessage(f,
+                if (f.Data.GetVariable("inited") == null)
+                {
+                    await f.Memory.MoveConversationTo(o.LoadedConversations.All["story-1"], o);
+                }
+                else {
+                    await o.Speaking.SendMessage(f,
                     "Hello! Let's talk. Type '/help' for a list of commands or '/tips' to get see some phrases that I respond to well.");
+                }
             }),
             new Command("tips", "Says some random sentence that the friend responds to.", async(f,m,o)=>
             {
@@ -26,24 +32,6 @@ namespace Core.ProcessorCodes.Commands
                     + string.Join(Environment.NewLine, phrases.Select(phr => phr.Phrase)),
                     phrases.Select(phr => new QuickReply(phr.Phrase)).ToArray()
                     );
-            }),
-            new Command("alice", "Enters Alice mode.", async (f,m,o)=>
-            {
-                if (!f.Memory.TalkingToAlice)
-                {
-                    f.Memory.CurrentConversation = null;
-                    f.Memory.TalkingToAlice = true;
-                    await o.Speaking.SendMessage(f, "Alright! I'm initializing the Alice subsystem.");
-                    await o.Speaking.SendMessage(f, "Alice... I sometimes don't make too much sense when using that subsystem.");
-                    await o.Speaking.SendMessage(f, "It's a little embarrassing so please don't judge me.");
-                    await o.Speaking.SendMessage(f, "And type 'exit' or 'quit' any time you want to end the subsystem!");
-                    f.Memory.Alice = o.Aiml.CreateAliceFor(f);
-                    await o.Speaking.SendMessage(f, "Done. Say hello to Alice!");
-                }
-                else
-                {
-                    await o.Speaking.SendSystemMessage(f, "You are already speaking to Alice. Type '/exit' to stop.");
-                }
             }),
             new Command("ayt", "Are you there?", async (f,m,o)=>
             {
@@ -67,20 +55,6 @@ namespace Core.ProcessorCodes.Commands
             new Command("name", "Says her name.", async (f,m,o)=>
             {
                 await o.Speaking.SendMessage(f, "My name is '" + f.Memory.Persistent.CommonName + "'.");
-            }),
-            new Command("exit", "Exits Alice mode.", async (f, m, o) =>
-            {
-                if (f.Memory.TalkingToAlice)
-                {
-                    f.Memory.TalkingToAlice = false;
-                    f.Memory.Alice.Dispose();
-                    await o.Speaking.SendMessage(f, "Phew.");
-                    await o.Speaking.SendMessage(f, "Well, that was fun ^^.");
-                }
-                else
-                {
-                    await o.Speaking.SendSystemMessage(f, "You are currently not talking to Alice.");
-                }
             }),
             new Command("books", "Start talking about books", async (f,m,o)=>
             {

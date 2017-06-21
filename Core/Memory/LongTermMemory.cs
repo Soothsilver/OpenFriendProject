@@ -13,6 +13,19 @@ namespace Core
         public string CommonName = "Daina";
         public string CaretakerName;
         public string FacebookId;
+
+        internal string GetVariable(string key)
+        {
+            if (Variables.ContainsKey(key))
+            {
+                return Variables[key];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public SerializableDictionary Variables;
         public int TelegramId;
         public string Country = null;

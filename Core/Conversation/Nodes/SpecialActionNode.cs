@@ -46,6 +46,16 @@ namespace Core.Conversation.Nodes
                     await overseer.Speaking.SendSystemMessage(friend,
                         friend.Memory.Persistent.CommonName + " now lives in " + friend.Memory.Persistent.Country + ".");
                     break;
+                case "SetCaretakerName":
+                    friend.Data.CaretakerName = parsedArguments[0];
+                    friend.SavePersistentMemory();
+                    await overseer.Speaking.SendSystemMessage(friend, "Caretaker name set to " + parsedArguments[0] + ".");
+                    break;
+                case "SetCommonName":
+                    friend.Data.CommonName = parsedArguments[0];
+                    friend.SavePersistentMemory();
+                    await overseer.Speaking.SendSystemMessage(friend, "Friend's name set to " + parsedArguments[0] + ".");
+                    break;
                 case "ExportMemory":
                     await overseer.Speaking.SendFile(friend, MemoryStorage.GetFilename(friend));
                     break;

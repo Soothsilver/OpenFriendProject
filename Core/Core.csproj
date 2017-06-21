@@ -70,8 +70,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alice\AimlCore.cs" />
-    <Compile Include="Alice\Alice.cs" />
     <Compile Include="Auxiliary\Auxiliary.cs" />
     <Compile Include="Auxiliary\Logging.cs" />
     <Compile Include="Auxiliary\R.cs" />
@@ -117,7 +115,6 @@
     <Compile Include="Friends\FriendMouth.cs" />
     <Compile Include="Memory\MemoryStorage.cs" />
     <Compile Include="Memory\LongTermMemory.cs" />
-    <Compile Include="ProcessorCodes\AliceProcessorCode.cs" />
     <Compile Include="ProcessorCodes\CommandsProcessorCode.cs" />
     <Compile Include="ProcessorCodes\Commands\AllCommands.cs" />
     <Compile Include="ProcessorCodes\Commands\Command.cs" />
@@ -135,6 +132,7 @@
     <Compile Include="Senses.cs" />
     <Compile Include="Speaking.cs" />
     <Compile Include="ThreadQueue.cs" />
+    <Compile Include="ProcessorCodes\TutorialLockProcessorCode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -142,12 +140,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AliceSubsystem\AliceSubsystem.csproj">
-      <Project>{df1e9e2b-eae2-440c-8116-858f79d3a14c}</Project>
-      <Name>AliceSubsystem</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Conversations\beautiful.txt">
@@ -171,6 +163,9 @@
     </Content>
     <Compile Include="Freeform\Riddle.cs" />
     <Content Include="Data\OpenFriendProjectLogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\OpenFriendProjectUserGuide.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\VirtualHeartCorporation.png">

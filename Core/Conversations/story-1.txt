@@ -7,9 +7,25 @@ SYS Your licenses are:\n- 1 lifetime subscription to a 1 virtual friend\n\nAcces
 		SYS You have been disconnected. Type /start to reconnect at any time.
 /end
 /label yes
-TODO 
-I should continue here.
-He hehe.
 /picture OpenFriendProjectLogo.png
-Well, that was the logo.
-Bye.
+SYS "All of us were lonely sometimes. But not anymore."
+SYS Welcome, {you}. Please type in your name.
+/input username
+/special:SetCaretakerName {$username}
+SYS Welcome, {you}. Your virtual friend has not yet been activated.
+SYS Before we activate her, we need you to specify some information first.
+SYS Type in a name for your virtual friend.
+/input commonName
+/special:SetCommonName {$commonName}
+SYS Your friend will be named {name}.
+SYS She will use the personality matrix "female university student". No other matrices are available at this time.
+SYS We are almost ready to spawn your friend.
+SYS While we're getting ready, here's a file you might find useful.
+/file OpenFriendProjectUserGuide.txt
+SYS We are ready.
+SYS WARNING! If you spawn a virtual friend, you will become her caretaker. Her existence will be bound to your subscription. If you ever deliberately send the destroy command or you no longer pay for your subscription, she will be removed from the Open Friend Project servers and cease to exist.
+SYS {you}, do you want to spawn your virtual friend, {name}, now?
+	-Yes, proceed.
+SYS Awakening {name}...
+/set inited true
+H-Hello...?

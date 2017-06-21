@@ -13,14 +13,21 @@ namespace Core.Conversation
         private PossibleReply[] _possibleReplies;
         public Branch(string line, params PossibleReply[] options)
         {
-            _line = line;
+            _line = line.Replace("\\n", Environment.NewLine); 
             _options = options.Select(str => new QuickReply(str.Title)).ToArray();
             _possibleReplies = options;
         }
 
         public override async Task Enter(Overseer overseer, Friend friend)
         {
-            await overseer.Speaking.SendMessage(friend, _line, _options);
+            if (_line.StartsWith("SYS "))
+            {
+                await overseer.Speaking.SendSystemMessage(friend, _line.Substring("SYS ".Length), _options);
+            }
+            else
+            {
+                await overseer.Speaking.SendMessage(friend, _line, _options);
+            }
         }
 
         public override async Task<bool> ProcessMessage(Overseer overseer, Friend friend, string message)
