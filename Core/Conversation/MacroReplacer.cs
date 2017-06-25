@@ -16,6 +16,7 @@ namespace Core.Conversation
                 text
                     .Replace("{name}", _owner.Memory.Persistent.CommonName)
                     .Replace("{you}", _owner.Memory.Persistent.CaretakerName)
+                    .Replace("{country}", _owner.Memory.Persistent.Country)
                 ;
             foreach(var variable in _owner.Memory.Persistent.Variables)
             {
