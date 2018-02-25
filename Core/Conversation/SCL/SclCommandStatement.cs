@@ -45,6 +45,13 @@ namespace Core.Conversation
                     return new DocumentFileLine("Data/" + this.Arguments[0]);
                 case "/input":
                     return new Nodes.SetVariableNode(this.Arguments[0]);
+                case "/set":
+                    return new LambdaActionNode(async (friend) =>
+                    {
+                        friend.Data.SetVariable(this.Arguments[0], this.Arguments[1]);
+                        await friend.Overseer.Speaking.SendSystemMessage(friend, "Configuration property '" + Arguments[0] + "' set to '" + this.Arguments[1] + "'.");
+                        friend.SavePersistentMemory();
+                    });
                 default:
                     if (Command.StartsWith("/special:"))
                     {

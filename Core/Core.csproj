@@ -30,10 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AIMLbot, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\Downloads\AIMLbot2.5\AIMLbot.dll</HintPath>
-    </Reference>
     <Reference Include="Antlr4.Runtime, Version=4.6.0.0, Culture=neutral, PublicKeyToken=09abb75b9ed49849, processorArchitecture=MSIL">
       <HintPath>..\packages\Antlr4.Runtime.4.6.1\lib\net45\Antlr4.Runtime.dll</HintPath>
       <Private>True</Private>
@@ -80,6 +76,7 @@
     <Compile Include="Conversation\MacroReplacer.cs" />
     <Compile Include="Conversation\Nodes\DelayedMovenode.cs" />
     <Compile Include="Conversation\Nodes\ImageFileLine.cs" />
+    <Compile Include="Conversation\Nodes\LambdaActionNode.cs" />
     <Compile Include="Conversation\Nodes\SpecialActionNode.cs" />
     <Compile Include="Conversation\Nodes\DoNothingNode.cs" />
     <Compile Include="Conversation\Nodes\SetVariableNode.cs" />
@@ -136,9 +133,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="config.ini">
+    <Content Include="config.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
